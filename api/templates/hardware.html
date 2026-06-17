@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Desert AgriTech - Hardware Guide</title>
+    <style>
+        * { margin:0; padding:0; box-sizing:border-box; font-family:'Segoe UI',sans-serif; }
+        body { background:linear-gradient(135deg,#d97706,#92400e); min-height:100vh; display:flex; flex-direction:column; align-items:center; padding:20px; }
+        .navbar { max-width:1100px; width:100%; margin-bottom:15px; display:flex; gap:10px; justify-content:center; flex-wrap:wrap; }
+        .nav-link { padding:10px 18px; background:rgba(255,255,255,0.9); color:#92400e; text-decoration:none; border-radius:8px; font-weight:600; font-size:13px; transition:0.3s; }
+        .nav-link:hover, .nav-link.active { background:#92400e; color:white; }
+        .container { background:#fff; border-radius:16px; padding:40px; max-width:1000px; width:100%; box-shadow:0 10px 40px rgba(0,0,0,0.2); margin-bottom:20px; }
+        h1 { color:#92400e; text-align:center; margin-bottom:5px; }
+        .subtitle { text-align:center; color:#666; margin-bottom:30px; }
+        h2 { color:#92400e; margin-bottom:15px; font-size:18px; }
+        h3 { color:#92400e; margin-bottom:10px; font-size:15px; }
+
+        /* Hero */
+        .hero { background:linear-gradient(135deg,#92400e,#d97706); border-radius:12px; padding:25px; color:white; text-align:center; margin-bottom:25px; }
+        .hero h2 { color:white; font-size:22px; margin-bottom:8px; }
+        .hero p { opacity:0.9; font-size:14px; }
+
+        /* Steps */
+        .steps { display:flex; flex-direction:column; gap:15px; margin-bottom:25px; }
+        .step { display:flex; gap:15px; align-items:flex-start; padding:15px; background:#fef3c7; border-radius:10px; border-left:4px solid #d97706; }
+        .step-num { background:#d97706; color:white; border-radius:50%; width:35px; height:35px; display:flex; align-items:center; justify-content:center; font-weight:700; font-size:16px; flex-shrink:0; }
+        .step-content h3 { color:#92400e; margin-bottom:5px; font-size:15px; }
+        .step-content p { color:#666; font-size:13px; line-height:1.6; }
+
+        /* Components */
+        .components-grid { display:grid; grid-template-columns:1fr 1fr; gap:15px; margin-bottom:25px; }
+        .component-card { border:2px solid #fef3c7; border-radius:10px; padding:15px; }
+        .component-card .icon { font-size:28px; margin-bottom:8px; }
+        .component-card h3 { color:#92400e; font-size:14px; margin-bottom:5px; }
+        .component-card p { color:#666; font-size:12px; line-height:1.5; }
+        .component-card .price { background:#fef3c7; color:#92400e; padding:3px 10px; border-radius:20px; font-size:12px; font-weight:600; display:inline-block; margin-top:8px; }
+
+        /* Platforms */
+        .platforms { display:grid; grid-template-columns:1fr 1fr 1fr; gap:15px; margin-bottom:25px; }
+        .platform-card { background:#fef3c7; border-radius:10px; padding:15px; text-align:center; }
+        .platform-card .icon { font-size:30px; margin-bottom:8px; }
+        .platform-card h3 { color:#92400e; font-size:14px; margin-bottom:5px; }
+        .platform-card p { color:#666; font-size:12px; }
+
+        /* FAQ */
+        .faq { display:flex; flex-direction:column; gap:12px; }
+        .faq-item { border:1px solid #e5e7eb; border-radius:8px; overflow:hidden; }
+        .faq-q { background:#fef3c7; padding:12px 15px; font-weight:600; color:#92400e; cursor:pointer; font-size:14px; }
+        .faq-a { padding:12px 15px; color:#666; font-size:13px; line-height:1.6; display:none; }
+        .faq-item.open .faq-a { display:block; }
+
+        /* Connection diagram */
+        .diagram { background:#1a1a2e; border-radius:12px; padding:20px; color:#fff; font-family:monospace; font-size:13px; line-height:2; margin-bottom:20px; }
+        .diagram .highlight { color:#d97706; font-weight:700; }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <a href="/" class="nav-link">🏠 Predictor</a>
+        <a href="/predict-options" class="nav-link">🎯 Smart Predict</a><a href="/insights" class="nav-link">📊 Insights</a>
+        <a href="/crop" class="nav-link">🌱 Crop Recommend</a>
+        <a href="/schedule" class="nav-link">📅 Schedule</a>
+        <a href="/hardware" class="nav-link active">🔧 Hardware</a>
+        <a href="/protection" class="nav-link">🛡️ Desert Shield</a>
+        <a href="/playbook" class="nav-link">📖 AI Playbook</a>
+        <a href="/contact" class="nav-link">🌿 Join the Oasis</a>
+        <a href="/about" class="nav-link">ℹ️ About</a>
+    </div>
+
+    <div class="container">
+        <h1>🔧 Hardware Integration Guide</h1>
+        <p class="subtitle">Connect real IoT sensors to Desert AgriTech AI system</p>
+
+        <div class="hero">
+            <h2>⚡ ESP32 + AI = Real-Time Farm Intelligence</h2>
+            <p>Your physical sensors send live data → Our AI predicts yield + recommends crops → Results visible on mobile, laptop & LCD display</p>
+        </div>
+
+        <!-- What You Need -->
+        <h2>📦 Hardware Components Required</h2>
+        <div class="components-grid">
+            <div class="component-card">
+                <div class="icon">🧠</div>
+                <h3>ESP32 Dev Board</h3>
+                <p>Main microcontroller with built-in WiFi. Collects sensor data and sends to AI server.</p>
+                
+            </div>
+            <div class="component-card">
+                <div class="icon">🌡️</div>
+                <h3>DHT22 Sensor</h3>
+                <p>Measures Temperature (°C) and Humidity (%) simultaneously with high accuracy.</p>
+                
+            </div>
+            <div class="component-card">
+                <div class="icon">💧</div>
+                <h3>Soil Moisture Sensor</h3>
+                <p>Capacitive type recommended for desert use — measures soil water content %.</p>
+                
+            </div>
+            <div class="component-card">
+                <div class="icon">⚗️</div>
+                <h3>pH Sensor Module</h3>
+                <p>Analog pH sensor measures water/soil acidity. Critical for hydroponic optimization.</p>
+                
+            </div>
+            <div class="component-card">
+                <div class="icon">☀️</div>
+                <h3>LDR / Light Sensor</h3>
+                <p>Photoresistor module measures light intensity to track daily sunlight exposure.</p>
+                
+            </div>
+            <div class="component-card">
+                <div class="icon">📟</div>
+                <h3>LCD Display (16x2)</h3>
+                <p>Optional — shows live sensor readings and AI predictions without needing a screen.</p>
+                
+            </div>
+        </div>
+
+        <!-- Connection Diagram -->
+        <h2>🔌 Connection Flow</h2>
+        <div class="diagram">
+            <span class="highlight">[DHT22]</span> ──── GPIO 4 ────► <span class="highlight">[ESP32]</span><br>
+            <span class="highlight">[Soil Sensor]</span> ── GPIO 34 ───► <span class="highlight">[ESP32]</span><br>
+            <span class="highlight">[pH Sensor]</span> ─── GPIO 35 ───► <span class="highlight">[ESP32]</span><br>
+            <span class="highlight">[Light Sensor]</span> ─ GPIO 32 ───► <span class="highlight">[ESP32]</span><br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;│<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;WiFi<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;│<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;► <span class="highlight">[Flask API Server]</span> ──► <span class="highlight">[AI Model]</span><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;│<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;┌──────────────────────────┐<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;▼&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;▼&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;▼<br>
+            <span class="highlight">[Mobile]</span>&nbsp;&nbsp;<span class="highlight">[Laptop]</span>&nbsp;&nbsp;<span class="highlight">[LCD Display]</span>
+        </div>
+
+        <!-- How to Connect -->
+        <h2>📋 How to Connect — Step by Step</h2>
+        <div class="steps">
+            <div class="step">
+                <div class="step-num">1</div>
+                <div class="step-content">
+                    <h3>Assemble Hardware</h3>
+                    <p>Connect all sensors to ESP32 as per the diagram above. Use breadboard + jumper wires. Power via USB or 5V adapter.</p>
+                </div>
+            </div>
+            <div class="step">
+                <div class="step-num">2</div>
+                <div class="step-content">
+                    <h3>Upload Arduino Code</h3>
+                    <p>Flash the ESP32 with our sensor code using Arduino IDE. Code reads all sensors every 30 seconds and sends data via WiFi HTTP POST to the AI server.</p>
+                </div>
+            </div>
+            <div class="step">
+                <div class="step-num">3</div>
+                <div class="step-content">
+                    <h3>Connect to Same WiFi</h3>
+                    <p>ESP32 and your laptop/server must be on same WiFi network. Update the server IP address in ESP32 code to match your laptop's local IP.</p>
+                </div>
+            </div>
+            <div class="step">
+                <div class="step-num">4</div>
+                <div class="step-content">
+                    <h3>Start Flask Server</h3>
+                    <p>Run python api/app1.py on your laptop. Server starts at port 5000. ESP32 will now auto-send data and receive AI predictions.</p>
+                </div>
+            </div>
+            <div class="step">
+                <div class="step-num">5</div>
+                <div class="step-content">
+                    <h3>Access from Any Device</h3>
+                    <p>Open browser on mobile or laptop. Go to http://[your-laptop-IP]:5000 to see live predictions from real sensor data.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Platforms -->
+        <h2>📱 Access From Any Platform</h2>
+        <div class="platforms">
+            <div class="platform-card">
+                <div class="icon">📱</div>
+                <h3>Mobile</h3>
+                <p>Open browser → Enter server IP → Full dashboard works on any smartphone</p>
+            </div>
+            <div class="platform-card">
+                <div class="icon">💻</div>
+                <h3>Laptop / PC</h3>
+                <p>localhost:5000 or network IP. Full feature access with larger screen view</p>
+            </div>
+            <div class="platform-card">
+                <div class="icon">📟</div>
+                <h3>LCD Display</h3>
+                <p>Connect I2C LCD to ESP32. Shows temp, humidity, yield prediction without internet</p>
+            </div>
+        </div>
+
+        <!-- FAQ -->
+        <h2>❓ FAQ — Common Questions</h2>
+        <div class="faq">
+            <div class="faq-item" onclick="toggleFaq(this)">
+                <div class="faq-q">Where to use this system?</div>
+                <div class="faq-a">Best for hydroponic farms, greenhouse setups, research labs, and desert agricultural projects. Ideal for Saudi Arabia, UAE, and other arid regions where water efficiency and crop optimization are critical.</div>
+            </div>
+            <div class="faq-item" onclick="toggleFaq(this)">
+                <div class="faq-q">When should I take sensor readings?</div><div class="faq-a">For best results, take readings at early morning (6-7 AM) and late afternoon (5-6 PM). Desert temperatures fluctuate significantly — morning readings give baseline conditions, afternoon shows peak stress.</div>
+            </div>
+            <div class="faq-item" onclick="toggleFaq(this)">
+                <div class="faq-q">How accurate are the predictions?</div>
+                <div class="faq-a">Our XGBoost model achieves 92.58% accuracy (R² score). Predictions improve further when using real sensor data instead of manual input. The crop recommendation uses weighted similarity scoring across 50 desert-suitable crops.</div>
+            </div>
+            <div class="faq-item" onclick="toggleFaq(this)">
+                <div class="faq-q">Best use case for this system?</div>
+                <div class="faq-a">Perfect for: small-scale desert hydroponic farms, agricultural research in arid zones, food security projects (aligned with Saudi Vision 2030), and university research demonstrations.</div>
+            </div>
+            <div class="faq-item" onclick="toggleFaq(this)">
+                <div class="faq-q">Can I use without hardware (simulation only)?</div>
+                <div class="faq-a">Yes! All pages work with manual slider/number input. Hardware integration is optional — it just makes predictions automatic and real-time without manual data entry.</div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function toggleFaq(item) {
+            item.classList.toggle('open');
+        }
+    </script>
+</body>
+</html>

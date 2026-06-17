@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Desert AgriTech - About</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #d97706, #92400e);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .navbar {
+            max-width: 900px;
+            margin: 0 auto 15px;
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+        }
+
+        .nav-link {
+            padding: 8px 12px;
+            background: rgba(255,255,255,0.9);
+            color: #92400e;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 12px;
+            transition: 0.3s;
+            white-space: nowrap;
+        }
+        .nav-link:hover, .nav-link.active {
+            background: #92400e;
+            color: white;
+        }
+
+        .container {
+            background: #fff;
+            border-radius: 16px;
+            padding: 40px;
+            max-width: 900px;
+            width: 100%;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+            line-height: 1.7;
+            color: #444;
+        }
+
+        h1 {
+            color: #92400e;
+            margin-bottom: 5px;
+            text-align: center;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 30px;
+        }
+
+        h2 {
+            color: #92400e;
+            margin-top: 25px;
+            margin-bottom: 10px;
+        }
+
+        .pipeline {
+            display: flex;
+            justify-content: space-between;
+            margin: 20px 0;
+            text-align: center;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .pipeline div {
+            background: #fef3c7;
+            padding: 15px;
+            border-radius: 8px;
+            flex: 1;
+            min-width: 120px;
+            font-weight: 600;
+            color: #92400e;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="navbar">
+        <a href="/" class="nav-link active">🏠 Predictor</a>
+        <a href="/predict-options" class="nav-link">🎯 Smart Predict</a>
+        <a href="/crop" class="nav-link">🌱 Crop Recommend</a>
+        <a href="/insights" class="nav-link">📊 Insights</a>
+        <a href="/schedule" class="nav-link">📅 Schedule</a>
+        <a href="/hardware" class="nav-link">🔧 Hardware</a>
+        <a href="/contact" class="nav-link">🌿 Join the Oasis</a>
+        <a href="/protection" class="nav-link">🛡️ Desert Shield</a>
+        <a href="/playbook" class="nav-link">📖 AI Playbook</a>
+        <a href="/about" class="nav-link active">ℹ️ About</a>
+    </div>
+    <div class="container">
+        <h1>🌾 Desert AgriTech</h1>
+        <p class="subtitle">AI-Powered Hydroponic Yield Prediction System</p>
+
+        <h2>Problem Statement</h2>
+        <p>
+            Saudi Arabia imports over 80% of its food due to its harsh desert climate. 
+            Hydroponic farming offers a water-efficient alternative, but optimizing 
+            growing conditions (temperature, light, nutrients, water) is complex and 
+            requires data-driven decision-making.
+        </p>
+
+        <h2>Solution</h2>
+        <p>
+            This project uses a custom-generated dataset (5,000 samples) modeling 
+            desert hydroponic conditions, trains an XGBoost regression model to 
+            predict crop yield, and serves predictions through a Flask API with an 
+            interactive web dashboard.
+        </p>
+
+        <h2>Pipeline</h2>
+        <div class="pipeline">
+            <div>Data Generation</div>
+            <div>EDA</div>
+            <div>Feature Engineering</div>
+            <div>XGBoost Model</div>
+            <div>Flask API</div>
+            <div>Web Dashboard</div>
+        </div>
+
+        <h2>Tech Stack</h2>
+        <p>
+            Python, Pandas, NumPy, Scikit-learn, XGBoost, Matplotlib, Seaborn, 
+            Flask, HTML/CSS/JavaScript
+        </p>
+
+        <h2>Future Scope</h2>
+        <p>
+            Phase 2 integrates real-time IoT sensors (ESP32 + DHT22, soil moisture, 
+            pH sensors) to feed live data into this model, replacing simulated 
+            inputs with real hydroponic farm readings.
+        </p>
+    </div>
+
+</body>
+</html>

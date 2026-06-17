@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Desert AgriTech - Crop Recommendation</title>
+    <style>
+        * { margin:0; padding:0; box-sizing:border-box; font-family:'Segoe UI',sans-serif; }
+        body { background:linear-gradient(135deg,#d97706,#92400e); min-height:100vh; display:flex; flex-direction:column; align-items:center; padding:20px; }
+        .navbar { max-width:1000px; width:100%; margin-bottom:15px; display:flex; gap:10px; justify-content:center; flex-wrap:wrap; }
+        .nav-link { padding:10px 20px; background:rgba(255,255,255,0.9); color:#92400e; text-decoration:none; border-radius:8px; font-weight:600; transition:0.3s; }
+        .nav-link:hover, .nav-link.active { background:#92400e; color:white; }
+        .container { background:#fff; border-radius:16px; padding:40px; max-width:1000px; width:100%; box-shadow:0 10px 40px rgba(0,0,0,0.2); }
+        h1 { color:#92400e; text-align:center; margin-bottom:5px; }
+        .subtitle { text-align:center; color:#666; margin-bottom:30px; }
+        .grid { display:grid; grid-template-columns:1fr 1fr; gap:20px; margin-bottom:20px; }
+        .field label { display:flex; justify-content:space-between; font-weight:600; color:#444; margin-bottom:5px; }
+        .field input[type="range"] { width:100%; accent-color:#d97706; }
+        .value { color:#d97706; font-weight:bold; }
+        button { display:block; width:100%; padding:15px; background:#d97706; color:white; border:none; border-radius:8px; font-size:18px; font-weight:bold; cursor:pointer; transition:0.3s; margin-top:20px; }
+        button:hover { background:#92400e; }
+        .results { margin-top:25px; display:none; }
+        .results h2 { color:#92400e; margin-bottom:15px; text-align:center; }
+        .crop-card { background:#fef3c7; border-radius:10px; padding:15px 20px; margin-bottom:10px; display:flex; justify-content:space-between; align-items:center; }
+        .crop-name { font-weight:700; color:#92400e; font-size:16px; }
+        .crop-score { font-size:14px; color:#666; }
+        .score-bar-container { flex:1; margin:0 15px; background:#e5e7eb; border-radius:4px; overflow:hidden; }
+        .score-bar { background:linear-gradient(90deg,#d97706,#92400e); height:16px; border-radius:4px; }
+        .rank { background:#92400e; color:white; border-radius:50%; width:30px; height:30px; display:flex; align-items:center; justify-content:center; font-weight:bold; font-size:14px; }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <a href="/" class="nav-link">🏠 Predictor</a>
+        <a href="/predict-options" class="nav-link">🎯 Smart Predict</a>
+        <a href="/insights" class="nav-link">📊 Model Insights</a>
+        <a href="/crop" class="nav-link active">🌱 Crop Recommend</a>
+        <a href="/schedule" class="nav-link">📅 Schedule</a>
+        <a href="/hardware" class="nav-link">🔧 Hardware</a>
+        <a href="/protection" class="nav-link">🛡️ Desert Shield</a>
+        <a href="/playbook" class="nav-link">📖 AI Playbook</a>
+        <a href="/contact" class="nav-link">🌿 Join the Oasis</a>
+        <a href="/about" class="nav-link">ℹ️ About</a>
+    </div>
+
+    <div class="container">
+        <h1>🌱 Crop Recommendation</h1>
+        <p class="subtitle">Current conditions daalo — AI best crops suggest karega</p>
+
+        <div class="grid">
+            <div class="field">
+                <label>Temperature (°C) <span class="value" id="val_temperature">42</span></label>
+                <input type="range" id="temperature" min="35" max="55" step="0.1" value="42">
+            </div>
+            <div class="field">
+                <label>Humidity (%) <span class="value" id="val_humidity">25</span></label>
+                <input type="range" id="humidity" min="10" max="40" step="0.1" value="25">
+            </div>
+            <div class="field">
+                <label>Soil Moisture (%) <span class="value" id="val_soil_moisture">60</span></label>
+                <input type="range" id="soil_moisture" min="20" max="80" step="0.1" value="60">
+            </div>
+            <div class="field">
+                <label>pH Level <span class="value" id="val_pH_level">6.5</span></label>
+                <input type="range" id="pH_level" min="5.5" max="7.5" step="0.01" value="6.5">
+            </div>
+            <div class="field">
+                <label>Light Hours <span class="value" id="val_light_hours">12</span></label><input type="range" id="light_hours" min="6" max="14" step="0.1" value="12">
+            </div>
+            <div class="field">
+                <label>Water Given (ml) <span class="value" id="val_water_given_ml">300</span></label>
+                <input type="range" id="water_given_ml" min="100" max="500" step="1" value="300">
+            </div>
+            <div class="field">
+                <label>Nutrient Level (%) <span class="value" id="val_nutrient_level">80</span></label>
+                <input type="range" id="nutrient_level" min="0" max="100" step="0.1" value="80">
+            </div>
+        </div>
+
+        <button onclick="getCropRecommendation()">🌾 Get Crop Recommendation</button>
+
+        <div class="results" id="resultsBox">
+            <h2>🏆 Top 10 Recommended Crops</h2>
+            <div id="cropList"></div>
+        </div>
+    </div>
+
+    <script>
+        var sliders = document.querySelectorAll('input[type="range"]');
+        for (var i = 0; i < sliders.length; i++) {
+            sliders[i].addEventListener('input', function() {
+                document.getElementById('val_' + this.id).textContent = this.value;
+            });
+        }
+
+        function getCropRecommendation() {
+            var data = {
+                temperature: parseFloat(document.getElementById('temperature').value),
+                humidity: parseFloat(document.getElementById('humidity').value),
+                soil_moisture: parseFloat(document.getElementById('soil_moisture').value),
+                pH_level: parseFloat(document.getElementById('pH_level').value),
+                light_hours: parseFloat(document.getElementById('light_hours').value),
+                water_given_ml: parseFloat(document.getElementById('water_given_ml').value),
+                nutrient_level: parseFloat(document.getElementById('nutrient_level').value)
+            };
+
+            fetch('/recommend', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(data)
+            })
+            .then(function(res) { return res.json(); })
+            .then(function(result) {
+                var box = document.getElementById('resultsBox');
+                var list = document.getElementById('cropList');
+                box.style.display = 'block';
+                list.innerHTML = '';
+
+                var recs = result.recommendations;
+                for (var i = 0; i < recs.length; i++) {
+                    var barWidth = recs[i].match_score + '%';
+                    list.innerHTML += '<div class="crop-card">' +
+                        '<div class="rank">' + (i+1) + '</div>' +
+                        '<div class="crop-name">' + recs[i].crop + '</div>' +
+                        '<div class="score-bar-container">' +
+                            '<div class="score-bar" style="width:' + barWidth + '"></div>' +
+                        '</div>' +
+                        '<div class="crop-score">' + recs[i].match_score + '%</div>' +
+                    '</div>';
+                }
+            });
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Desert AgriTech - Desert Shield</title>
+    <style>
+        * { margin:0; padding:0; box-sizing:border-box; font-family:'Segoe UI',sans-serif; }
+        body { background:linear-gradient(135deg,#d97706,#92400e); min-height:100vh; display:flex; flex-direction:column; align-items:center; padding:20px; }
+        .navbar { max-width:1100px; width:100%; margin-bottom:15px; display:flex; gap:8px; justify-content:center; flex-wrap:wrap; }
+        .nav-link { padding:8px 12px; background:rgba(255,255,255,0.9); color:#92400e; text-decoration:none; border-radius:8px; font-weight:600; font-size:12px; transition:0.3s; white-space:nowrap; }
+        .nav-link:hover, .nav-link.active { background:#92400e; color:white; }
+        .container { background:#fff; border-radius:16px; padding:35px; max-width:1000px; width:100%; box-shadow:0 10px 40px rgba(0,0,0,0.2); margin-bottom:20px; }
+        h1 { color:#92400e; text-align:center; margin-bottom:5px; }
+        h2 { color:#92400e; margin-bottom:15px; font-size:18px; }
+        .subtitle { text-align:center; color:#666; margin-bottom:25px; }
+
+        /* Hero */
+        .hero { background:linear-gradient(135deg,#1a0a00,#7c2d12); border-radius:12px; padding:25px; color:white; text-align:center; margin-bottom:25px; }
+        .hero h2 { color:white; font-size:20px; margin-bottom:8px; }
+        .hero p { opacity:0.85; font-size:13px; line-height:1.7; }
+
+        /* Protection Cards */
+        .protection-grid { display:grid; grid-template-columns:1fr 1fr 1fr; gap:15px; margin-bottom:25px; }
+        .prot-card { border-radius:12px; padding:20px; }
+        .prot-card.heat { background:linear-gradient(135deg,#fef3c7,#fde68a); border-left:4px solid #f59e0b; }
+        .prot-card.rain { background:linear-gradient(135deg,#dbeafe,#bfdbfe); border-left:4px solid #3b82f6; }
+        .prot-card.wind { background:linear-gradient(135deg,#d1fae5,#a7f3d0); border-left:4px solid #10b981; }
+        .prot-card .icon { font-size:30px; margin-bottom:10px; }
+        .prot-card h3 { font-size:15px; margin-bottom:8px; color:#1a1a1a; }
+        .prot-card ul { list-style:none; padding:0; }
+        .prot-card ul li { font-size:12px; color:#444; padding:4px 0; border-bottom:1px solid rgba(0,0,0,0.05); line-height:1.5; }
+        .prot-card ul li:before { content:"→ "; color:#92400e; font-weight:700; }
+
+        /* Timeline Table */
+        .timeline-table { width:100%; border-collapse:collapse; margin-bottom:25px; }
+        .timeline-table th { background:#92400e; color:white; padding:10px 12px; text-align:left; font-size:13px; }
+        .timeline-table td { padding:10px 12px; font-size:13px; color:#444; border-bottom:1px solid #f0f0f0; }
+        .timeline-table tr:hover td { background:#fef3c7; }
+        .timeline-table .freq-badge { background:#fef3c7; color:#92400e; padding:3px 8px; border-radius:10px; font-size:11px; font-weight:600; }
+
+        /* Soil Protection */
+        .soil-grid { display:grid; grid-template-columns:1fr 1fr; gap:15px; margin-bottom:25px; }
+        .soil-card { background:#fef3c7; border-radius:10px; padding:18px; }
+        .soil-card .icon { font-size:24px; margin-bottom:8px; }
+        .soil-card h3 { color:#92400e; font-size:14px; margin-bottom:8px; }
+        .soil-card p { color:#666; font-size:12px; line-height:1.6; }
+
+        /* Tech Stack */
+        .tech-grid { display:grid; grid-template-columns:1fr 1fr 1fr; gap:15px; margin-bottom:25px; }
+        .tech-card { background:#1a1a2e; border-radius:10px; padding:18px; color:white; text-align:center; }
+        .tech-card .icon { font-size:28px; margin-bottom:8px; }
+        .tech-card h3 { font-size:14px; color:#d97706; margin-bottom:6px; }
+        .tech-card p { font-size:11px; color:#aaa; line-height:1.5; }
+
+        /* Alert System */
+        .alert-section { background:#fef3c7; border-radius:12px; padding:20px; margin-bottom:15px; border-left:4px solid #d97706; }
+        .alert-section h3 { color:#92400e; margin-bottom:10px; font-size:15px; }
+        .alert-item { display:flex; gap:12px; align-items:flex-start; padding:8px 0; border-bottom:1px solid rgba(217,119,6,0.2); }
+        .alert-item .day { background:#d97706; color:white; border-radius:6px; padding:3px 8px; font-size:11px; font-weight:700; flex-shrink:0; }
+        .alert-item p { font-size:12px; color:#444; line-height:1.5; }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <a href="/" class="nav-link">🏠 Predictor</a>
+        <a href="/predict-options" class="nav-link">🎯 Smart Predict</a>
+        <a href="/insights" class="nav-link">📊 Insights</a>
+        <a href="/crop" class="nav-link">🌱 Crop Recommend</a>
+        <a href="/schedule" class="nav-link">📅 Schedule</a>
+        <a href="/hardware" class="nav-link">🔧 Hardware</a>
+        <a href="/protection" class="nav-link active">🛡️ Desert Shield</a>
+        <a href="/playbook" class="nav-link">📖 AI Playbook</a>
+        <a href="/contact" class="nav-link">🌿 Join the Oasis</a>
+        <a href="/about" class="nav-link">ℹ️ About</a>
+    </div>
+
+    <div class="container">
+        <h1>🛡️ Desert Shield</h1>
+        <p class="subtitle">Complete crop protection system for extreme desert conditions</p>
+
+        <div class="hero">
+            <h2>⚡ AI-Powered Protection Against Desert Extremes</h2>
+            <p>Saudi Arabia's desert environment brings 55°C heat, sudden flash rains, and high-velocity dust storms. Our AI continuously monitors environmental data and triggers protective responses before damage occurs.</p>
+        </div>
+
+        <!-- Protection Cards -->
+        <h2>🌍 Environmental Protection Modules</h2>
+        <div class="protection-grid">
+            <div class="prot-card heat">
+                <div class="icon">🔥</div>
+                <h3>Heat Protection</h3>
+                <ul>
+                    <li>Automated shading nets deploy at 45°C+</li>
+                    <li>Misting schedule optimized by AI every 2 hrs</li>
+                    <li>Root zone cooling via subsurface irrigation</li>
+                    <li>Reflective mulch to reduce soil temp by 8-10°C</li>
+                    <li>Harvest alert triggered before heat damage</li>
+                </ul>
+            </div>
+            <div class="prot-card rain">
+                <div class="icon">🌧️</div>
+                <h3>Rain Defense</h3>
+                <ul>
+                    <li>Real-time precipitation sensor tracking</li>
+                    <li>Automated shelter deployment within 60 sec</li>
+                    <li>Drainage optimization to prevent root rot</li>
+                    <li>Post-rain soil pH recalibration alert</li>
+                    <li>Flash flood early warning integration</li>
+                </ul>
+            </div>
+            <div class="prot-card wind">
+                <div class="icon">💨</div>
+                <h3>Wind & Storm Defense</h3>
+                <ul>
+                    <li>Predictive wind-break mechanics via AI</li>
+                    <li>Historical climate analytics for storm prep</li>
+                    <li>Automated net anchoring at 30+ km/h winds</li>
+                    <li>Dust storm filter activation protocol</li>
+                    <li>Post-storm damage assessment checklist</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Monitoring Timeline -->
+        <h2>📅 Crop Monitoring Timeline</h2>
+        <table class="timeline-table">
+            <tr>
+                <th>Crop</th>
+                <th>Monitoring Frequency</th>
+                <th>Key Check Points</th>
+                <th>Critical Days</th>
+            </tr>
+            <tr>
+                <td>🌶️ Chili Pepper (मिर्च)</td>
+                <td><span class="freq-badge">Every 4 hrs</span></td>
+                <td>Soil moisture, temp stress, fruit set</td>
+                <td>Day 20, 45, 70</td>
+            </tr>
+            <tr>
+                <td>🥬 Lettuce (सलाद पत्ता)</td>
+                <td><span class="freq-badge">Every 3 hrs</span></td>
+                <td>Humidity, tip burn, bolting risk</td>
+                <td>Day 15, 30, 45</td>
+            </tr>
+            <tr><td>🌾 Wheat (गेहूं)</td>
+                <td><span class="freq-badge">Every 8 hrs</span></td>
+                <td>Heat stress, grain fill, lodging</td>
+                <td>Day 30, 60, 90</td>
+            </tr>
+            <tr>
+                <td>🍅 Tomato (टमाटर)</td>
+                <td><span class="freq-badge">Every 4 hrs</span></td>
+                <td>Flower drop, blossom end rot</td>
+                <td>Day 25, 50, 75</td>
+            </tr>
+            <tr>
+                <td>🌿 Moringa (सहजन)</td>
+                <td><span class="freq-badge">Every 12 hrs</span></td>
+                <td>Growth rate, pod formation</td>
+                <td>Day 45, 90, 135</td>
+            </tr>
+            <tr>
+                <td>🌵 Aloe Vera (एलोवेरा)</td>
+                <td><span class="freq-badge">Every 24 hrs</span></td>
+                <td>Water stress, leaf firmness</td>
+                <td>Day 60, 120, 180</td>
+            </tr>
+        </table>
+
+        <!-- Soil Protection -->
+        <h2>🌍 Soil Protection Module</h2>
+        <div class="soil-grid">
+            <div class="soil-card">
+                <div class="icon">🏜</div>
+                <h3>Desertification Control</h3>
+                <p>AI-driven multi-layer mulching tracking prevents topsoil loss. Organic matter additions scheduled based on soil health score. Wind erosion barriers auto-deployed when wind speed exceeds threshold.</p>
+            </div>
+            <div class="soil-card">
+                <div class="icon">🧂</div>
+                <h3>Salinity Management</h3>
+                <p>Automated sensor tracking prevents salt buildup from high evaporation rates. Leaching schedule triggered when EC (electrical conductivity) exceeds 2.5 dS/m. Gypsum application alerts for sodic soil correction.</p>
+            </div>
+            <div class="soil-card">
+                <div class="icon">💧</div>
+                <h3>Water Conservation</h3>
+                <p>Deficit irrigation mode trains plants for drought resistance. Only 30% of traditional water needed in hydroponic setup. Evapotranspiration tracked hourly to optimize watering schedules.</p>
+            </div>
+            <div class="soil-card">
+                <div class="icon">🦠</div>
+                <h3>Bio-Regenerative Tips</h3>
+                <p>Desert mycorrhizae fungi accelerate root growth naturally. Companion planting with date palms creates cool microclimates. Local desert microbe inoculation reduces chemical fertilizer need by 40%.</p>
+            </div>
+        </div>
+
+        <!-- Smart Tech -->
+        <h2>🛸 Smart Machinery & Tech Integration</h2>
+        <div class="tech-grid">
+            <div class="tech-card">
+                <div class="icon">🚁</div>
+                <h3>Drone Surveillance</h3>
+                <p>Thermal drone sweeps map heat pockets across fields. AI image analysis detects crop stress zones 3 days before visible damage. Twice daily sweeps at 6AM and 5PM.</p>
+            </div>
+            <div class="tech-card">
+                <div class="icon">☀️</div>
+                <h3>Solar Automation</h3>
+                <p>Off-grid solar arrays power entire sensory network. Zero dependency on grid electricity. Battery backup ensures 48hr operation during dust storms blocking solar panels.</p>
+            </div>
+            <div class="tech-card">
+                <div class="icon">🤖</div>
+                <h3>AI Core Advantage</h3>
+                <p>Desert-AgriTech AI connects drones and solar units to auto-regulate the farm. Predictive models warn 72 hours before critical threshold breaches. Zero human intervention needed for routine protection.</p>
+            </div>
+        </div>
+
+        <!-- AI Failure Warnings -->
+        <h2>⚡ AI Failure Warning System</h2>
+        <div class="alert-section">
+            <h3>Milestone Monitoring — Auto Alerts</h3>
+            <div class="alert-item">
+                <span class="day">Day 15</span>
+                <p>Height lagging below 8cm → Check soil salinity. Expected: 10-12cm.Action: Flush with clean water, check EC meter reading.</p>
+            </div>
+            <div class="alert-item">
+                <span class="day">Day 30</span>
+                <p>Leaf color yellowing detected → Nitrogen deficiency likely. Action: Increase nutrient solution concentration by 15%.</p>
+            </div>
+            <div class="alert-item">
+                <span class="day">Day 45</span>
+                <p>Flowering delayed by 5+ days → Temperature stress suspected. Action: Deploy shading net, increase misting frequency.</p>
+            </div>
+            <div class="alert-item">
+                <span class="day">Day 60</span>
+                <p>Yield prediction dropping below baseline → Water stress detected. Action: Increase irrigation frequency, check for root zone temperature.</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Highlight current day alerts based on days input
+    </script>
+</body>
+</html>

@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Desert AgriTech - Predict</title>
+    <style>
+        * { margin:0; padding:0; box-sizing:border-box; font-family:'Segoe UI',sans-serif; }
+        body { background:linear-gradient(135deg,#d97706,#92400e); min-height:100vh; display:flex; flex-direction:column; align-items:center; padding:20px; }
+        .navbar { max-width:1100px; width:100%; margin-bottom:15px; display:flex; gap:10px; justify-content:center; flex-wrap:wrap; }
+        .nav-link { padding:10px 18px; background:rgba(255,255,255,0.9); color:#92400e; text-decoration:none; border-radius:8px; font-weight:600; font-size:13px; transition:0.3s; }
+        .nav-link:hover, .nav-link.active { background:#92400e; color:white; }
+        .container { background:#fff; border-radius:16px; padding:40px; max-width:1000px; width:100%; box-shadow:0 10px 40px rgba(0,0,0,0.2); }
+        h1 { color:#92400e; text-align:center; margin-bottom:5px; }
+        .subtitle { text-align:center; color:#666; margin-bottom:30px; }
+
+        /* Mode Selection */
+        .mode-section { margin-bottom:30px; }
+        .mode-section h2 { color:#92400e; margin-bottom:15px; font-size:16px; }
+        .mode-cards { display:grid; grid-template-columns:1fr 1fr 1fr; gap:15px; }
+        .mode-card { border:2px solid #e5e7eb; border-radius:12px; padding:15px; cursor:pointer; transition:0.3s; text-align:center; }
+        .mode-card:hover { border-color:#d97706; background:#fef3c7; }
+        .mode-card.selected { border-color:#d97706; background:#fef3c7; }
+        .mode-card .icon { font-size:28px; margin-bottom:8px; }
+        .mode-card .title { font-weight:700; color:#92400e; font-size:14px; }
+        .mode-card .desc { font-size:12px; color:#666; margin-top:4px; }
+
+        /* Inputs */
+        .input-section { display:grid; grid-template-columns:1fr 1fr; gap:20px; margin-bottom:25px; }
+        .field { display:flex; flex-direction:column; gap:8px; }
+        .field label { font-weight:600; color:#444; font-size:14px; }
+        .field input { padding:12px; border:2px solid #e5e7eb; border-radius:8px; font-size:15px; outline:none; }
+        .field input:focus { border-color:#d97706; }
+        .days-field { display:none; }
+
+        button { width:100%; padding:15px; background:#d97706; color:white; border:none; border-radius:8px; font-size:17px; font-weight:bold; cursor:pointer; transition:0.3s; }
+        button:hover { background:#92400e; }
+
+        /* Results */
+        .result { margin-top:25px; display:none; }
+        .result-card { background:#fef3c7; border-radius:12px; padding:20px; margin-bottom:12px; }
+        .result-header { display:flex; justify-content:space-between; align-items:center; margin-bottom:12px; }
+        .result-title { font-size:18px; font-weight:700; color:#92400e; }
+        .badge { background:#92400e; color:white; padding:5px 14px; border-radius:20px; font-size:13px; }
+        .stats-row { display:grid; gap:10px; margin-top:10px; }
+        .stats-row.cols-2 { grid-template-columns:1fr 1fr; }
+        .stats-row.cols-3 { grid-template-columns:1fr 1fr 1fr; }
+        .stat-box { background:white; border-radius:8px; padding:12px; text-align:center; }
+        .stat-val { font-size:20px; font-weight:700; color:#d97706; }
+        .stat-lbl { font-size:11px; color:#888; margin-top:3px; }
+        .alert-good { background:#d1fae5; color:#065f46; padding:12px; border-radius:8px; margin-top:10px; font-weight:600; }
+        .alert-warn { background:#fee2e2; color:#991b1b; padding:12px; border-radius:8px; margin-top:10px; font-weight:600; }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <a href="/" class="nav-link">🏠 Predictor</a>
+        <a href="/predict-options" class="nav-link active">🎯 Smart Predict</a>
+        <a href="/insights" class="nav-link">📊 Insights</a>
+        <a href="/crop" class="nav-link">🌱 Crop Recommend</a>
+        <a href="/schedule" class="nav-link">📅 Schedule</a>
+        <a href="/hardware" class="nav-link">🔧 Hardware</a>
+        <a href="/protection" class="nav-link">🛡️ Desert Shield</a>
+        <a href="/playbook" class="nav-link">📖 AI Playbook</a>
+        <a href="/contact" class="nav-link">🌿 Join the Oasis</a>
+        <a href="/about" class="nav-link">ℹ️ About</a>
+    </div>
+
+    <div class="container"><h1>🎯 Smart Prediction Engine</h1>
+        <p class="subtitle">Choose your prediction mode — AI will do the rest</p>
+
+        <!-- Mode Selection -->
+        <div class="mode-section">
+            <h2>Select Prediction Mode:</h2>
+            <div class="mode-cards">
+                <div class="mode-card selected" onclick="selectMode('yield')">
+                    <div class="icon">🌾</div>
+                    <div class="title">Only Yield</div>
+                    <div class="desc">Predict how much crop will grow (kg)</div>
+                </div>
+                <div class="mode-card" onclick="selectMode('crop_yield')">
+                    <div class="icon">🌱</div>
+                    <div class="title">Crop + Yield</div>
+                    <div class="desc">Best crop + expected yield</div>
+                </div>
+                <div class="mode-card" onclick="selectMode('crop_yield_days')">
+                    <div class="icon">📅</div>
+                    <div class="title">Crop + Yield + Days</div>
+                    <div class="desc">Full prediction with growth timeline</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Inputs -->
+        <div class="input-section">
+            <div class="field">
+                <label>🌡️ Temperature (°C)</label>
+                <input type="number" id="temperature" value="42" min="35" max="55">
+            </div>
+            <div class="field">
+                <label>💧 Humidity (%)</label>
+                <input type="number" id="humidity" value="25" min="10" max="40">
+            </div>
+            <div class="field">
+                <label>🌱 Soil Moisture (%)</label>
+                <input type="number" id="soil_moisture" value="60" min="20" max="80">
+            </div>
+            <div class="field">
+                <label>⚗️ pH Level</label>
+                <input type="number" id="pH_level" value="6.5" min="5.5" max="7.5" step="0.1">
+            </div>
+            <div class="field">
+                <label>☀️ Light Hours</label>
+                <input type="number" id="light_hours" value="12" min="6" max="14">
+            </div>
+            <div class="field">
+                <label>🚿 Water Given (ml)</label>
+                <input type="number" id="water_given_ml" value="300" min="100" max="500">
+            </div>
+            <div class="field">
+                <label>🧪 Nutrient Level (%)</label>
+                <input type="number" id="nutrient_level" value="80" min="0" max="100">
+            </div>
+            <div class="field">
+                <label>💨 CO2 (ppm)</label>
+                <input type="number" id="co2_ppm" value="800" min="400" max="1200">
+            </div>
+            <div class="field">
+                <label>📆 Day Number</label>
+                <input type="number" id="day_number" value="45" min="1" max="90">
+            </div>
+            <div class="field days-field" id="days_grown_field">
+                <label>🌿 Days Already Grown</label>
+                <input type="number" id="days_grown" value="0" min="0" max="365">
+            </div>
+        </div>
+
+        <button onclick="runPrediction()">🚀 Run Prediction</button>
+
+        <div class="result" id="resultSection">
+            <h2 style="color:#92400e; margin:20px 0 15px; text-align:center;" id="resultTitle"></h2>
+            <div id="resultList"></div>
+        </div>
+    </div>
+
+    <script>
+        var currentMode = 'yield';
+
+        function selectMode(mode) {
+            currentMode = mode;
+            var cards = document.querySelectorAll('.mode-card');
+            for (var i = 0; i < cards.length; i++) {
+                cards[i].classList.remove('selected');
+            }
+            event.currentTarget.classList.add('selected');
+
+            var daysField = document.getElementById('days_grown_field');
+            daysField.style.display = (mode === 'crop_yield_days') ? 'flex' : 'none';
+        }
+
+        function runPrediction() {
+            var data = {
+                temperature: parseFloat(document.getElementById('temperature').value),humidity: parseFloat(document.getElementById('humidity').value),
+                soil_moisture: parseFloat(document.getElementById('soil_moisture').value),
+                pH_level: parseFloat(document.getElementById('pH_level').value),
+                light_hours: parseFloat(document.getElementById('light_hours').value),
+                water_given_ml: parseFloat(document.getElementById('water_given_ml').value),
+                nutrient_level: parseFloat(document.getElementById('nutrient_level').value),
+                co2_ppm: parseFloat(document.getElementById('co2_ppm').value),
+                day_number: parseInt(document.getElementById('day_number').value),
+                days_grown: parseInt(document.getElementById('days_grown').value) || 0,
+                mode: currentMode
+            };
+
+            fetch('/smart-predict', {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify(data)
+            })
+            .then(function(res) { return res.json(); })
+            .then(function(result) {
+                showResults(result, data.mode);
+            });
+        }
+
+        function showResults(result, mode) {
+            var section = document.getElementById('resultSection');
+            var list = document.getElementById('resultList');
+            var title = document.getElementById('resultTitle');
+            section.style.display = 'block';
+            list.innerHTML = '';
+
+            if (mode === 'yield') {
+                title.textContent = 'Yield Prediction Result';
+                var statusClass = result.status === 'Healthy' ? 'alert-good' : 'alert-warn';
+                var statusIcon = result.status === 'Healthy' ? '✅' : '⚠️';
+                list.innerHTML = '<div class="result-card">' +
+                    '<div class="stats-row cols-2">' +
+                        '<div class="stat-box"><div class="stat-val">' + result.yield_kg + ' kg</div><div class="stat-lbl">Predicted Yield</div></div>' +
+                        '<div class="stat-box"><div class="stat-val">' + result.status + '</div><div class="stat-lbl">Plant Health</div></div>' +
+                    '</div>' +
+                    '<div class="' + statusClass + '">' + statusIcon + ' ' + result.status + ' conditions detected</div>' +
+                '</div>';
+
+            } else if (mode === 'crop_yield') {
+                title.textContent = 'Top 3 Crops + Yield Prediction';
+                var crops = result.recommendations;
+                for (var i = 0; i < crops.length; i++) {
+                    var c = crops[i];
+                    list.innerHTML += '<div class="result-card">' +
+                        '<div class="result-header">' +
+                            '<div class="result-title">' + (i+1) + '. ' + c.crop + '</div>' +
+                            '<div class="badge">' + c.match_score + '% match</div>' +
+                        '</div>' +
+                        '<div class="stats-row cols-2">' +
+                            '<div class="stat-box"><div class="stat-val">' + c.yield_kg + ' kg</div><div class="stat-lbl">Predicted Yield</div></div>' +
+                            '<div class="stat-box"><div class="stat-val">' + c.match_score + '%</div><div class="stat-lbl">Soil Match</div></div>' +
+                        '</div>' +
+                    '</div>';
+                }
+
+            } else {
+                title.textContent = 'Top 3 Crops + Yield + Growth Timeline';
+                var crops = result.recommendations;
+                for (var i = 0; i < crops.length; i++) {
+                    var c = crops[i];
+                    var remaining = c.min_days - c.days_grown;
+                    var alertHtml = remaining <= 0 ?
+                        '<div class="alert-good">✅ Ready to harvest!</div>' :
+                        '<div class="alert-warn">⏳ ' + remaining + ' more days until harvest</div>';
+
+                    list.innerHTML += '<div class="result-card">' +
+                        '<div class="result-header">' +'<div class="result-title">' + (i+1) + '. ' + c.crop + '</div>' +
+                            '<div class="badge">' + c.match_score + '% match</div>' +
+                        '</div>' +
+                        '<div class="stats-row cols-3">' +
+                            '<div class="stat-box"><div class="stat-val">' + c.yield_kg + ' kg</div><div class="stat-lbl">Predicted Yield</div></div>' +
+                            '<div class="stat-box"><div class="stat-val">' + c.min_days + '-' + c.max_days + '</div><div class="stat-lbl">Growth Days</div></div>' +
+                            '<div class="stat-box"><div class="stat-val">' + c.days_grown + '</div><div class="stat-lbl">Days Grown</div></div>' +
+                        '</div>' +
+                        alertHtml +
+                    '</div>';
+                }
+            }
+        }
+    </script>
+</body>
+</html>

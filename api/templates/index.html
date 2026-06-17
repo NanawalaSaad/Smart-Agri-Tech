@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Desert AgriTech - AI Yield Predictor</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #d97706, #92400e);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+        }
+        
+
+        .container {
+            background: #fff;
+            border-radius: 16px;
+            padding: 40px;
+            max-width: 900px;
+            width: 100%;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+        }
+
+        h1 {
+            color: #92400e;
+            text-align: center;
+            margin-bottom: 5px;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 30px;
+        }
+        .navbar {
+            max-width: 900px;
+            margin: 0 auto 15px;
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+        }
+        
+        .nav-link {
+            padding: 8px 12px;
+            background: rgba(255,255,255,0.9);
+            color: #92400e;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 12px;
+            transition: 0.3s;
+            white-space: nowrap;
+        }
+        
+        .nav-link:hover, .nav-link.active {
+            background: #92400e;
+            color: white;
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 25px;
+        }
+
+        .field label {
+            display: flex;
+            justify-content: space-between;
+            font-weight: 600;
+            color: #444;
+            margin-bottom: 5px;
+        }
+
+        .field input[type="range"] {
+            width: 100%;
+            accent-color: #d97706;
+        }
+
+        .value {
+            color: #d97706;
+            font-weight: bold;
+        }
+
+        button {
+            display: block;
+            width: 100%;
+            margin-top: 30px;
+            padding: 15px;
+            background:rgb(217, 87, 6);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        button:hover {
+            background: #92400e;
+        }
+
+        .result {
+            margin-top: 25px;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+            font-size: 20px;
+            font-weight: bold;
+            display: none;
+        }
+
+        .result.healthy {
+            background: #d1fae5;
+            color: #065f46;
+        }
+
+        .result.stress {
+            background: #fee2e2;
+            color: #991b1b;
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <a href="/" class="nav-link active">🏠 Predictor</a>
+        <a href="/predict-options" class="nav-link">🎯 Smart Predict</a>
+        <a href="/crop" class="nav-link">🌱 Crop Recommend</a>
+        <a href="/insights" class="nav-link">📊 Insights</a>
+        <a href="/schedule" class="nav-link">📅 Schedule</a>
+        <a href="/hardware" class="nav-link">🔧 Hardware</a>
+        <a href="/protection" class="nav-link">🛡️ Desert Shield</a>
+        <a href="/playbook" class="nav-link">📖 AI Playbook</a>
+        <a href="/contact" class="nav-link">🌿 Join the Oasis</a>
+        <a href="/about" class="nav-link">ℹ️ About</a>
+    </div>
+    <div class="container">
+        
+        <h1>🌾 Desert AgriTech</h1>
+        
+        <p class="subtitle">AI-Powered Hydroponic Yield Predictor</p>
+
+        <div class="grid">
+            <div class="field">
+                <label>Temperature (°C) <span class="value" id="val_temperature">42</span></label>
+                <input type="range" id="temperature" min="35" max="55" step="0.1" value="42">
+            </div>
+
+            <div class="field">
+                <label>Humidity (%) <span class="value" id="val_humidity">25</span></label>
+                <input type="range" id="humidity" min="10" max="40" step="0.1" value="25">
+            </div>
+
+            <div class="field">
+                <label>Soil Moisture (%) <span class="value" id="val_soil_moisture">60</span></label>
+                <input type="range" id="soil_moisture" min="20" max="80" step="0.1" value="60">
+            </div>
+
+            <div class="field">
+                <label>pH Level <span class="value" id="val_pH_level">6.5</span></label>
+                <input type="range" id="pH_level" min="5.5" max="7.5" step="0.01" value="6.5">
+            </div>
+
+            <div class="field">
+                <label>Light Hours <span class="value" id="val_light_hours">12</span></label>
+                <input type="range" id="light_hours" min="6" max="14" step="0.1" value="12">
+            </div>
+
+            <div class="field">
+                <label>Water Given (ml) <span class="value" id="val_water_given_ml">300</span></label>
+                <input type="range" id="water_given_ml" min="100" max="500" step="1" value="300">
+            </div>
+
+            <div class="field"><label>Nutrient Level (%) <span class="value" id="val_nutrient_level">80</span></label>
+                <input type="range" id="nutrient_level" min="0" max="100" step="0.1" value="80">
+            </div>
+
+            <div class="field">
+                <label>CO2 (ppm) <span class="value" id="val_co2_ppm">800</span></label>
+                <input type="range" id="co2_ppm" min="400" max="1200" step="1" value="800">
+            </div>
+
+            <div class="field">
+                <label>Day Number <span class="value" id="val_day_number">45</span></label>
+                <input type="range" id="day_number" min="1" max="90" step="1" value="45">
+            </div>
+        </div>
+
+        <button onclick="predictYield()">🔍 Predict Yield</button>
+
+        <div class="result" id="resultBox"></div>
+    </div>
+
+    <script>
+        var sliders = document.querySelectorAll('input[type="range"]');
+        for (var i = 0; i < sliders.length; i++) {
+            sliders[i].addEventListener('input', function() {
+                document.getElementById('val_' + this.id).textContent = this.value;
+            });
+        }
+    
+        function predictYield() {
+            var data = {
+                temperature: parseFloat(document.getElementById('temperature').value),
+                humidity: parseFloat(document.getElementById('humidity').value),
+                soil_moisture: parseFloat(document.getElementById('soil_moisture').value),
+                pH_level: parseFloat(document.getElementById('pH_level').value),
+                light_hours: parseFloat(document.getElementById('light_hours').value),
+                water_given_ml: parseFloat(document.getElementById('water_given_ml').value),
+                nutrient_level: parseFloat(document.getElementById('nutrient_level').value),
+                co2_ppm: parseFloat(document.getElementById('co2_ppm').value),
+                day_number: parseInt(document.getElementById('day_number').value)
+            };
+    
+            fetch('/predict', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(data)
+            })
+            .then(function(res) { return res.json(); })
+            .then(function(result) {
+                var box = document.getElementById('resultBox');
+                box.style.display = 'block';
+    
+                if (result.status === 'Healthy') {
+                    box.className = 'result healthy';
+                    box.innerHTML = 'Predicted Yield: ' + result.yield_kg + ' kg <br> Plant Healthy';
+                } else {
+                    box.className = 'result stress';
+                    box.innerHTML = 'Predicted Yield: ' + result.yield_kg + ' kg <br> Water Stress Risk';
+                }
+            });
+        }
+    </script>
+
+</body>
+</html>
