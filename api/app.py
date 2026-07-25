@@ -1,8 +1,10 @@
 from flask import Flask, render_template, request, jsonify
+from flask_cors import CORS
 import pickle
 import os
 
 app = Flask(__name__)
+CORS(app)
 
 # --- GLOBAL LIVE SENSOR MEMORY ---
 live_sensor_data = {
@@ -83,14 +85,17 @@ def index(): return render_template('index.html')
 def predict_options(): return render_template('predict_options.html')
 @app.route('/crop')
 def crop(): return render_template('crop.html')
+
+# ✅ Yahan par naam strictly lowercase mein kar diye hain
 @app.route('/schedule')
-def schedule(): return render_template('Schedule.html')
+def schedule(): return render_template('schedule.html')
 @app.route('/hardware')
-def hardware(): return render_template('Hardware.html')
+def hardware(): return render_template('hardware.html')
 @app.route('/protection')
-def protection(): return render_template('Protection.html')
+def protection(): return render_template('protection.html')
 @app.route('/playbook')
-def playbook(): return render_template('Playbook.html')
+def playbook(): return render_template('playbook.html')
+
 @app.route('/insights')
 def insights(): return render_template('insights.html')
 @app.route('/about')
