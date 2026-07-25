@@ -9,61 +9,54 @@
         .navbar { max-width:1100px; width:100%; margin-bottom:15px; display:flex; gap:8px; justify-content:center; flex-wrap:wrap; }
         .nav-link { padding:8px 12px; background:rgba(255,255,255,0.9); color:#92400e; text-decoration:none; border-radius:8px; font-weight:600; font-size:12px; transition:0.3s; white-space:nowrap; }
         .nav-link:hover, .nav-link.active { background:#92400e; color:white; }
-        .container { background:#fff; border-radius:16px; padding:35px; max-width:1000px; width:100%; box-shadow:0 10px 40px rgba(0,0,0,0.2); margin-bottom:20px; }
+        .container { background:#fff; border-radius:16px; padding:35px; max-width:1100px; width:100%; box-shadow:0 10px 40px rgba(0,0,0,0.2); margin-bottom:20px; }
         h1 { color:#92400e; text-align:center; margin-bottom:5px; }
-        h2 { color:#92400e; margin-bottom:15px; font-size:18px; }
-        .subtitle { text-align:center; color:#666; margin-bottom:25px; }
-
-        /* Search */
+        .subtitle { text-align:center; color:#666; margin-bottom:25px; font-weight: 500;}
+        
         .search-box { display:flex; gap:10px; margin-bottom:25px; }
         .search-box input { flex:1; padding:12px 15px; border:2px solid #e5e7eb; border-radius:8px; font-size:14px; outline:none; }
         .search-box input:focus { border-color:#d97706; }
-        .search-box button { padding:12px 20px; background:#d97706; color:white; border:none; border-radius:8px; font-weight:600; cursor:pointer; }
-
-        /* Crop Cards */
-        .crops-grid { display:grid; grid-template-columns:1fr 1fr; gap:20px; }
-        .crop-card { border:2px solid #fef3c7; border-radius:12px; overflow:hidden; }
-        .crop-header { background:linear-gradient(135deg,#92400e,#d97706); padding:15px 20px; color:white; display:flex; justify-content:space-between; align-items:center; cursor:pointer; }
-        .crop-header h3 { font-size:15px; }
-        .crop-header .days-badge { background:rgba(255,255,255,0.2); padding:3px 10px; border-radius:20px; font-size:12px; }
-        .crop-body { padding:20px; display:none; }
+        
+        .filter-btns { display:flex; gap:10px; flex-wrap:wrap; margin-bottom:25px; justify-content: center;}
+        .filter-btn { padding:10px 20px; border:2px solid #d97706; border-radius:20px; background:white; color:#92400e; font-size:14px; font-weight:bold; cursor:pointer; transition:0.3s; }
+        .filter-btn.active, .filter-btn:hover { background:#d97706; color:white; }
+        
+        .crops-grid { display:grid; grid-template-columns:1fr 1fr; gap:25px; }
+        .crop-card { border:2px solid #fef3c7; border-radius:12px; overflow:hidden; background: #fff;}
+        .crop-header { background:linear-gradient(135deg,#92400e,#d97706); padding:18px 20px; color:white; display:flex; justify-content:space-between; align-items:center; cursor:pointer; transition: 0.2s;}
+        .crop-header:hover { opacity: 0.9;}
+        .crop-header h3 { font-size:16px; display: flex; align-items: center; gap: 8px;}
+        .crop-header .days-badge { background:rgba(255,255,255,0.25); padding:6px 12px; border-radius:20px; font-size:12px; font-weight: bold; border: 1px solid rgba(255,255,255,0.4);}
+        
+        .crop-body { padding:25px; display:none; background: #fafafa;}
         .crop-body.open { display:block; }
-
-        /* Progress Bar */
-        .milestones { margin-bottom:15px; }
-        .milestone-label { font-size:12px; color:#666; margin-bottom:6px; font-weight:600; }
-        .milestone-bar { display:flex; gap:3px; margin-bottom:12px; }
-        .milestone-bar .phase { flex:1; height:24px; border-radius:4px; display:flex; align-items:center; justify-content:center; font-size:10px; color:white; font-weight:600; }
+        
+        .milestones { margin-bottom:20px; }
+        .milestone-label { font-size:14px; color:#444; margin-bottom:8px; font-weight:bold; }
+        .milestone-bar { display:flex; gap:4px; margin-bottom:12px; }
+        .milestone-bar .phase { flex:1; height:28px; border-radius:6px; display:flex; align-items:center; justify-content:center; font-size:11px; color:white; font-weight:bold; text-shadow: 0 1px 2px rgba(0,0,0,0.3); text-align: center; padding: 2px;}
         .phase.germination { background:#10b981; }
         .phase.vegetative { background:#3b82f6; }
         .phase.flowering { background:#f59e0b; }
         .phase.harvest { background:#ef4444; }
-
-        /* Details Grid */
-        .details-grid { display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-bottom:15px; }
-        .detail-item { background:#fef3c7; border-radius:8px; padding:10px; }
-        .detail-item .label { font-size:11px; color:#888; margin-bottom:3px; }
-        .detail-item .value { font-size:13px; font-weight:600; color:#92400e; }
-
-        /* Tips */
-        .tips { background:#f0fdf4; border-radius:8px; padding:12px; border-left:3px solid #10b981; }
-        .tips h4 { color:#065f46; font-size:13px; margin-bottom:8px; }
-        .tips ul { list-style:none; padding:0; }
-        .tips ul li { font-size:12px; color:#444; padding:3px 0; }
-        .tips ul li:before { content:"💡 "; }
-
-        /* Filter buttons */
-        .filter-btns { display:flex; gap:8px; flex-wrap:wrap; margin-bottom:20px; }
-        .filter-btn { padding:6px 14px; border:2px solid #d97706; border-radius:20px; background:white; color:#92400e; font-size:12px; font-weight:600; cursor:pointer; transition:0.3s; }
-        .filter-btn.active, .filter-btn:hover { background:#d97706; color:white; }
+        
+        .details-grid { display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-bottom:20px; }
+        .detail-item { background:#fff; border-radius:8px; padding:12px; border: 1px solid #e5e7eb;}
+        .detail-item .label { font-size:12px; color:#6b7280; margin-bottom:4px; font-weight: 600;}
+        .detail-item .value { font-size:15px; font-weight:bold; color:#92400e; }
+        
+        .tips { background:#f0fdf4; border-radius:8px; padding:18px; border-left:5px solid #10b981; }
+        .tips h4 { color:#065f46; font-size:15px; margin-bottom:10px; }
+        .tips ul { list-style:none; padding:0; margin-left: 15px;}
+        .tips ul li { font-size:13px; color:#374151; padding:3px 0; line-height: 1.5;}
     </style>
 </head>
 <body>
     <div class="navbar">
         <a href="/" class="nav-link">🏠 Predictor</a>
         <a href="/predict-options" class="nav-link">🎯 Smart Predict</a>
-        <a href="/insights" class="nav-link">📊 Insights</a>
         <a href="/crop" class="nav-link">🌱 Crop Recommend</a>
+        <a href="/insights" class="nav-link">📊 Insights</a>
         <a href="/schedule" class="nav-link">📅 Schedule</a>
         <a href="/hardware" class="nav-link">🔧 Hardware</a>
         <a href="/protection" class="nav-link">🛡️ Desert Shield</a>
@@ -73,405 +66,183 @@
     </div>
 
     <div class="container">
-        <h1>📖 AI Cultivation Engine</h1>
-        <p class="subtitle">Complete growing playbook for 50 desert crops</p>
+        <h1>📖 AI Cultivation Engine Data</h1>
+        <p class="subtitle">Complete environmental growing playbook for the AI Database.</p>
 
-        <!-- Search -->
         <div class="search-box">
-            <input type="text" id="searchInput" placeholder="Search crop... (e.g. Wheat, Tomato, मिर्च)" oninput="filterCrops()">
-            <button onclick="filterCrops()">🔍 Search</button>
+            <input type="text" id="searchInput" placeholder="Search the database... (e.g., Date Palm, Pistachio, Aloe Vera)" oninput="filterCrops()">
         </div>
 
-        <!-- Filter -->
         <div class="filter-btns">
-            <button class="filter-btn active" onclick="filterByCategory('all', this)">All Crops</button>
-            <button class="filter-btn" onclick="filterByCategory('grain', this)">🌾 Grains</button>
-            <button class="filter-btn" onclick="filterByCategory('vegetable', this)">🥬 Vegetables</button>
-            <button class="filter-btn" onclick="filterByCategory('herb', this)">🌿 Herbs</button>
-            <button class="filter-btn" onclick="filterByCategory('desert', this)">🌵 Desert Special</button>
-            <button class="filter-btn" onclick="filterByCategory('legume', this)">🫘 Legumes</button>
+            <button class="filter-btn active" onclick="filterByCategory('All', this)">All Categories</button>
+            <button class="filter-btn" onclick="filterByCategory('Tree', this)">🌳 Trees</button>
+            <button class="filter-btn" onclick="filterByCategory('Plant', this)">🌿 Plants</button>
+            <button class="filter-btn" onclick="filterByCategory('Dry Fruit', this)">🥜 Dry Fruits</button>
         </div>
 
-        <!-- Crops Grid -->
         <div class="crops-grid" id="cropsGrid">
-
-            <!-- Chili Pepper -->
-            <div class="crop-card" data-category="vegetable" data-name="chili pepper mirch">
-                <div class="crop-header" onclick="toggleCrop(this)">
-                    <h3>🌶️ Chili Pepper (मिर्च)</h3>
-                    <span class="days-badge">70-100 days</span>
-                </div>
-                <div class="crop-body">
-                    <div class="milestones">
-                        <div class="milestone-label">Growth Timeline</div>
-                        <div class="milestone-bar">
-                            <div class="phase germination">Day 1-10 Germination</div>
-                            <div class="phase vegetative">Day 10-40 Growth</div>
-                            <div class="phase flowering">Day 40-70 Flowering</div>
-                            <div class="phase harvest">Day 70+ Harvest</div>
-                        </div>
-                    </div>
-                    <div class="details-grid">
-                        <div class="detail-item"><div class="label">Sowing Depth</div><div class="value">0.5 cm</div></div>
-                        <div class="detail-item"><div class="label">Water Schedule</div><div class="value">Every 4 days</div></div>
-                        <div class="detail-item"><div class="label">Ideal pH</div><div class="value">6.0 - 7.0</div></div>
-                        <div class="detail-item"><div class="label">Temperature</div><div class="value">35 - 46°C</div></div>
-                        <div class="detail-item"><div class="label">Light Hours</div><div class="value">11 - 14 hrs</div></div>
-                        <div class="detail-item"><div class="label">Harvest Tip</div><div class="value">Bright red color</div></div>
-                    </div>
-                    <div class="tips">
-                        <h4>💡 Desert Growing Tips</h4>
-                        <ul>
-                            <li>Water at 4AM/8PM — avoid midday irrigation</li>
-                            <li>Mulch base to reduce soil temp by 8°C</li>
-                            <li>Shade net (30%) reduces heat stress at 48°C+</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Wheat --><div class="crop-card" data-category="grain" data-name="wheat gehun">
-    <div class="crop-header" onclick="toggleCrop(this)">
-        <h3>🌾 Wheat (गेहूं)</h3>
-        <span class="days-badge">90-120 days</span>
-    </div>
-    <div class="crop-body">
-        <div class="milestones">
-            <div class="milestone-label">Growth Timeline</div>
-            <div class="milestone-bar">
-                <div class="phase germination">Day 1-7 Sprout</div>
-                <div class="phase vegetative">Day 7-60 Tiller</div>
-                <div class="phase flowering">Day 60-90 Head</div>
-                <div class="phase harvest">Day 90+ Harvest</div>
-            </div>
-        </div>
-        <div class="details-grid">
-            <div class="detail-item"><div class="label">Sowing Depth</div><div class="value">3-5 cm</div></div>
-            <div class="detail-item"><div class="label">Water Schedule</div><div class="value">Every 10 days</div></div>
-            <div class="detail-item"><div class="label">Ideal pH</div><div class="value">6.0 - 7.5</div></div>
-            <div class="detail-item"><div class="label">Temperature</div><div class="value">35 - 50°C</div></div>
-            <div class="detail-item"><div class="label">Light Hours</div><div class="value">8 - 12 hrs</div></div>
-            <div class="detail-item"><div class="label">Harvest Tip</div><div class="value">Golden yellow color</div></div>
-        </div>
-        <div class="tips">
-            <h4>💡 Desert Growing Tips</h4>
-            <ul>
-                <li>Sow in cooler months (Oct-Feb) in Saudi Arabia</li>
-                <li>Hydro-prime seeds 8hrs before sowing</li>
-                <li>Use heat-tolerant varieties (e.g., KSWH-3)</li>
-            </ul>
-        </div>
-    </div>
-</div>
-
-<!-- Tomato -->
-<div class="crop-card" data-category="vegetable" data-name="tomato tamatar">
-    <div class="crop-header" onclick="toggleCrop(this)">
-        <h3>🍅 Tomato (टमाटर)</h3>
-        <span class="days-badge">70-100 days</span>
-    </div>
-    <div class="crop-body">
-        <div class="milestones">
-            <div class="milestone-label">Growth Timeline</div>
-            <div class="milestone-bar">
-                <div class="phase germination">Day 1-8 Sprout</div>
-                <div class="phase vegetative">Day 8-35 Grow</div>
-                <div class="phase flowering">Day 35-70 Flower</div>
-                <div class="phase harvest">Day 70+ Harvest</div>
-            </div>
-        </div>
-        <div class="details-grid">
-            <div class="detail-item"><div class="label">Sowing Depth</div><div class="value">0.5 cm</div></div>
-            <div class="detail-item"><div class="label">Water Schedule</div><div class="value">Every 4 days</div></div>
-            <div class="detail-item"><div class="label">Ideal pH</div><div class="value">6.0 - 6.8</div></div>
-            <div class="detail-item"><div class="label">Temperature</div><div class="value">35 - 45°C</div></div>
-            <div class="detail-item"><div class="label">Light Hours</div><div class="value">12 - 14 hrs</div></div>
-            <div class="detail-item"><div class="label">Harvest Tip</div><div class="value">Fully red & firm</div></div>
-        </div>
-        <div class="tips">
-            <h4>💡 Desert Growing Tips</h4>
-            <ul><li>Calcium foliar spray prevents blossom end rot</li>
-                            <li>Companion plant with basil for pest control</li>
-                            <li>Prune to single stem in high heat conditions</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Date Palm -->
-            <div class="crop-card" data-category="desert" data-name="date palm khajur">
-                <div class="crop-header" onclick="toggleCrop(this)">
-                    <h3>🌴 Date Palm (खजूर)</h3>
-                    <span class="days-badge">180-365 days</span>
-                </div>
-                <div class="crop-body">
-                    <div class="milestones">
-                        <div class="milestone-label">Growth Timeline</div>
-                        <div class="milestone-bar">
-                            <div class="phase germination">Day 1-30 Root</div>
-                            <div class="phase vegetative">Day 30-180 Establish</div>
-                            <div class="phase flowering">Day 180-300 Trunk</div>
-                            <div class="phase harvest">Day 300+ Fronds</div>
-                        </div>
-                    </div>
-                    <div class="details-grid">
-                        <div class="detail-item"><div class="label">Sowing Depth</div><div class="value">5 cm</div></div>
-                        <div class="detail-item"><div class="label">Water Schedule</div><div class="value">Every 14 days</div></div>
-                        <div class="detail-item"><div class="label">Ideal pH</div><div class="value">6.5 - 8.0</div></div>
-                        <div class="detail-item"><div class="label">Temperature</div><div class="value">40 - 55°C</div></div>
-                        <div class="detail-item"><div class="label">Light Hours</div><div class="value">10 - 14 hrs</div></div>
-                        <div class="detail-item"><div class="label">Harvest Tip</div><div class="value">Dates turn brown</div></div>
-                    </div>
-                    <div class="tips">
-                        <h4>💡 Desert Growing Tips</h4>
-                        <ul>
-                            <li>Most drought-tolerant crop — ideal for Saudi Arabia</li>
-                            <li>Deep root system reaches water table naturally</li>
-                            <li>Plant as windbreak for other sensitive crops</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Moringa -->
-            <div class="crop-card" data-category="desert" data-name="moringa sahjan drumstick">
-                <div class="crop-header" onclick="toggleCrop(this)">
-                    <h3>🌿 Moringa (सहजन)</h3>
-                    <span class="days-badge">90-180 days</span>
-                </div>
-                <div class="crop-body">
-                    <div class="milestones">
-                        <div class="milestone-label">Growth Timeline</div>
-                        <div class="milestone-bar">
-                            <div class="phase germination">Day 1-14 Sprout</div>
-                            <div class="phase vegetative">Day 14-60 Grow</div>
-                            <div class="phase flowering">Day 60-120 Pod</div>
-                            <div class="phase harvest">Day 120+ Harvest</div>
-                        </div>
-                    </div>
-                    <div class="details-grid">
-                        <div class="detail-item"><div class="label">Sowing Depth</div><div class="value">2-3 cm</div></div>
-                        <div class="detail-item"><div class="label">Water Schedule</div><div class="value">Every 10 days</div></div>
-                        <div class="detail-item"><div class="label">Ideal pH</div><div class="value">6.0 - 7.5</div></div>
-                        <div class="detail-item"><div class="label">Temperature</div><div class="value">38 - 55°C</div></div><div class="detail-item"><div class="label">Light Hours</div><div class="value">10 - 14 hrs</div></div>
-                        <div class="detail-item"><div class="label">Harvest Tip</div><div class="value">Pods 30-45cm long</div></div>
-                    </div>
-                    <div class="tips">
-                        <h4>💡 Desert Growing Tips</h4>
-                        <ul>
-                            <li>Survives months without water — perfect for desert</li>
-                            <li>Leaves harvest at 45 days — high protein content</li>
-                            <li>Grows 3-5m tall — use as shade provider for small crops</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Spinach -->
-            <div class="crop-card" data-category="vegetable" data-name="spinach palak">
-                <div class="crop-header" onclick="toggleCrop(this)">
-                    <h3>🥬 Spinach (पालक)</h3>
-                    <span class="days-badge">30-50 days</span>
-                </div>
-                <div class="crop-body">
-                    <div class="milestones">
-                        <div class="milestone-label">Growth Timeline</div>
-                        <div class="milestone-bar">
-                            <div class="phase germination">Day 1-7 Sprout</div>
-                            <div class="phase vegetative">Day 7-25 Leaf</div>
-                            <div class="phase flowering">Day 25-40 Mature</div>
-                            <div class="phase harvest">Day 30+ Harvest</div>
-                        </div>
-                    </div>
-                    <div class="details-grid">
-                        <div class="detail-item"><div class="label">Sowing Depth</div><div class="value">1-2 cm</div></div>
-                        <div class="detail-item"><div class="label">Water Schedule</div><div class="value">Every 4 days</div></div>
-                        <div class="detail-item"><div class="label">Ideal pH</div><div class="value">6.0 - 7.0</div></div>
-                        <div class="detail-item"><div class="label">Temperature</div><div class="value">35 - 42°C</div></div>
-                        <div class="detail-item"><div class="label">Light Hours</div><div class="value">9 - 12 hrs</div></div>
-                        <div class="detail-item"><div class="label">Harvest Tip</div><div class="value">Outer leaves first</div></div>
-                    </div>
-                    <div class="tips">
-                        <h4>💡 Desert Growing Tips</h4>
-                        <ul>
-                            <li>Fastest growing crop — 30 days to harvest</li>
-                            <li>Shade cloth (50%) essential in peak summer</li>
-                            <li>Harvest early morning for best leaf quality</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Aloe Vera -->
-            <div class="crop-card" data-category="desert" data-name="aloe vera elovera">
-                <div class="crop-header" onclick="toggleCrop(this)">
-                    <h3>🌵 Aloe Vera (एलोवेरा)</h3>
-                    <span class="days-badge">180-365 days</span>
-                </div>
-                <div class="crop-body">
-                    <div class="milestones">
-                        <div class="milestone-label">Growth Timeline</div>
-                        <div class="milestone-bar">
-                            <div class="phase germination">Day 1-30 Root</div>
-                            <div class="phase vegetative">Day 30-120 Pup</div>
-                            <div class="phase flowering">Day 120-240 Mature</div>
-                            <div class="phase harvest">Day 180+ Harvest</div>
-                        </div>
-                    </div>
-                    <div class="details-grid">
-                        <div class="detail-item"><div class="label">Sowing Depth</div><div class="value">5 cm</div></div><div class="detail-item"><div class="label">Water Schedule</div><div class="value">Every 14 days</div></div>
-                        <div class="detail-item"><div class="label">Ideal pH</div><div class="value">6.5 - 8.0</div></div>
-                        <div class="detail-item"><div class="label">Temperature</div><div class="value">38 - 55°C</div></div>
-                        <div class="detail-item"><div class="label">Light Hours</div><div class="value">10 - 14 hrs</div></div>
-                        <div class="detail-item"><div class="label">Harvest Tip</div><div class="value">Outer leaves only</div></div>
-                    </div>
-                    <div class="tips">
-                        <h4>💡 Desert Growing Tips</h4>
-                        <ul>
-                            <li>Extremely drought tolerant — water every 2 weeks</li>
-                            <li>High commercial value in Saudi cosmetics market</li>
-                            <li>Propagate via offsets (pups) for fast expansion</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Mint -->
-            <div class="crop-card" data-category="herb" data-name="mint pudina">
-                <div class="crop-header" onclick="toggleCrop(this)">
-                    <h3>🌿 Mint (पुदीना)</h3>
-                    <span class="days-badge">20-35 days</span>
-                </div>
-                <div class="crop-body">
-                    <div class="milestones">
-                        <div class="milestone-label">Growth Timeline</div>
-                        <div class="milestone-bar">
-                            <div class="phase germination">Day 1-7 Sprout</div>
-                            <div class="phase vegetative">Day 7-20 Grow</div>
-                            <div class="phase flowering">Day 20-30 Mature</div>
-                            <div class="phase harvest">Day 20+ Harvest</div>
-                        </div>
-                    </div>
-                    <div class="details-grid">
-                        <div class="detail-item"><div class="label">Sowing Depth</div><div class="value">0.5 cm</div></div>
-                        <div class="detail-item"><div class="label">Water Schedule</div><div class="value">Every 3 days</div></div>
-                        <div class="detail-item"><div class="label">Ideal pH</div><div class="value">6.0 - 7.0</div></div>
-                        <div class="detail-item"><div class="label">Temperature</div><div class="value">35 - 42°C</div></div>
-                        <div class="detail-item"><div class="label">Light Hours</div><div class="value">9 - 12 hrs</div></div>
-                        <div class="detail-item"><div class="label">Harvest Tip</div><div class="value">Before flowering</div></div>
-                    </div>
-                    <div class="tips">
-                        <h4>💡 Desert Growing Tips</h4>
-                        <ul>
-                            <li>High demand in Saudi/Gulf market for tea & food</li>
-                            <li>Keep roots moist — wilts fast in desert heat</li>
-                            <li>Harvest every 3-4 weeks for continuous supply</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Chickpea -->
-            <div class="crop-card" data-category="legume" data-name="chickpea chana">
-                <div class="crop-header" onclick="toggleCrop(this)">
-                    <h3>🫘 Chickpea (चना)</h3>
-                    <span class="days-badge">90-120 days</span>
-                </div>
-                <div class="crop-body">
-                    <div class="milestones">
-                        <div class="milestone-label">Growth Timeline</div>
-                        <div class="milestone-bar">
-                            <div class="phase germination">Day 1-10 Sprout</div>
-                            <div class="phase vegetative">Day 10-50 Grow</div><div class="phase flowering">Day 50-85 Pod</div>
-                            <div class="phase harvest">Day 90+ Harvest</div>
-                        </div>
-                    </div>
-                    <div class="details-grid">
-                        <div class="detail-item"><div class="label">Sowing Depth</div><div class="value">5-8 cm</div></div>
-                        <div class="detail-item"><div class="label">Water Schedule</div><div class="value">Every 12 days</div></div>
-                        <div class="detail-item"><div class="label">Ideal pH</div><div class="value">6.0 - 7.5</div></div>
-                        <div class="detail-item"><div class="label">Temperature</div><div class="value">35 - 45°C</div></div>
-                        <div class="detail-item"><div class="label">Light Hours</div><div class="value">8 - 11 hrs</div></div>
-                        <div class="detail-item"><div class="label">Harvest Tip</div><div class="value">Pods turn yellow</div></div>
-                    </div>
-                    <div class="tips">
-                        <h4>💡 Desert Growing Tips</h4>
-                        <ul>
-                            <li>Nitrogen-fixing — improves soil naturally</li>
-                            <li>Very drought tolerant after establishment</li>
-                            <li>Inoculate seeds with Rhizobium before sowing</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Sorghum -->
-            <div class="crop-card" data-category="grain" data-name="sorghum jowar">
-                <div class="crop-header" onclick="toggleCrop(this)">
-                    <h3>🌾 Sorghum (ज्वार)</h3>
-                    <span class="days-badge">90-120 days</span>
-                </div>
-                <div class="crop-body">
-                    <div class="milestones">
-                        <div class="milestone-label">Growth Timeline</div>
-                        <div class="milestone-bar">
-                            <div class="phase germination">Day 1-7 Sprout</div>
-                            <div class="phase vegetative">Day 7-55 Grow</div>
-                            <div class="phase flowering">Day 55-90 Head</div>
-                            <div class="phase harvest">Day 90+ Harvest</div>
-                        </div>
-                    </div>
-                    <div class="details-grid">
-                        <div class="detail-item"><div class="label">Sowing Depth</div><div class="value">2-4 cm</div></div>
-                        <div class="detail-item"><div class="label">Water Schedule</div><div class="value">Every 10 days</div></div>
-                        <div class="detail-item"><div class="label">Ideal pH</div><div class="value">6.0 - 7.5</div></div>
-                        <div class="detail-item"><div class="label">Temperature</div><div class="value">35 - 55°C</div></div>
-                        <div class="detail-item"><div class="label">Light Hours</div><div class="value">8 - 12 hrs</div></div>
-                        <div class="detail-item"><div class="label">Harvest Tip</div><div class="value">Seeds are hard</div></div>
-                    </div>
-                    <div class="tips">
-                        <h4>💡 Desert Growing Tips</h4>
-                        <ul>
-                            <li>Most heat-tolerant grain — survives 55°C</li>
-                            <li>3x more water efficient than wheat</li>
-                            <li>Dual purpose — grain + animal fodder</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-
+            <!-- Cards will be dynamically injected here by JavaScript -->
         </div>
     </div>
 
     <script>
+        // ==========================================
+        // DYNAMIC CROP DATABASE ARRAYS
+        // (You can paste your full python arrays exactly as they are inside these brackets)
+        // ==========================================
+        
+        const trees_data = [
+            {'name':'Date Palm', 'region':'Saudi/India', 'temp_min':25,'temp_max':50,'humidity_min':10,'humidity_max':40,'ph_min':7.0,'ph_max':8.5,'soil_moisture_min':10,'soil_moisture_max':30,'light_min':85,'light_max':100,'rain_min':0,'rain_max':150,'grow_days':1095,'water_need':'Low','priority':10},
+            {'name':'Olive', 'region':'Saudi/India', 'temp_min':10,'temp_max':40,'humidity_min':25,'humidity_max':60,'ph_min':5.5,'ph_max':8.5,'soil_moisture_min':20,'soil_moisture_max':45,'light_min':80,'light_max':100,'rain_min':250,'rain_max':700,'grow_days':1460,'water_need':'Low','priority':10},
+            {'name':'Pomegranate', 'region':'Saudi/India', 'temp_min':18,'temp_max':38,'humidity_min':20,'humidity_max':50,'ph_min':5.5,'ph_max':7.2,'soil_moisture_min':20,'soil_moisture_max':45,'light_min':75,'light_max':100,'rain_min':200,'rain_max':700,'grow_days':730,'water_need':'Low','priority':10},
+            {'name':'Fig', 'region':'Saudi/India', 'temp_min':15,'temp_max':38,'humidity_min':20,'humidity_max':55,'ph_min':6.0,'ph_max':8.0,'soil_moisture_min':20,'soil_moisture_max':45,'light_min':75,'light_max':100,'rain_min':300,'rain_max':800,'grow_days':730,'water_need':'Low','priority':9},
+            {'name':'Moringa', 'region':'Saudi/India', 'temp_min':20,'temp_max':42,'humidity_min':20,'humidity_max':65,'ph_min':6.0,'ph_max':8.0,'soil_moisture_min':15,'soil_moisture_max':45,'light_min':75,'light_max':100,'rain_min':250,'rain_max':1500,'grow_days':180,'water_need':'Low','priority':10},
+            {'name':'Acacia', 'region':'Saudi', 'temp_min':20,'temp_max':48,'humidity_min':5,'humidity_max':35,'ph_min':6.0,'ph_max':8.5,'soil_moisture_min':5,'soil_moisture_max':25,'light_min':80,'light_max':100,'rain_min':100,'rain_max':500,'grow_days':730,'water_need':'Low','priority':9},
+            {'name':'Sidr (Lote Tree)', 'region':'Saudi', 'temp_min':20,'temp_max':45,'humidity_min':10,'humidity_max':40,'ph_min':6.5,'ph_max':8.5,'soil_moisture_min':10,'soil_moisture_max':30,'light_min':80,'light_max':100,'rain_min':100,'rain_max':500,'grow_days':1095,'water_need':'Low','priority':9},
+            {'name':'Tamarind', 'region':'Saudi/India', 'temp_min':20,'temp_max':40,'humidity_min':30,'humidity_max':70,'ph_min':5.5,'ph_max':7.5,'soil_moisture_min':25,'soil_moisture_max':55,'light_min':75,'light_max':100,'rain_min':500,'rain_max':1500,'grow_days':1825,'water_need':'Low','priority':8},
+            {'name':'Ghaf Tree', 'region':'Saudi', 'temp_min':22,'temp_max':50,'humidity_min':5,'humidity_max':30,'ph_min':7.0,'ph_max':9.0,'soil_moisture_min':5,'soil_moisture_max':20,'light_min':85,'light_max':100,'rain_min':50,'rain_max':300,'grow_days':730,'water_need':'Low','priority':9},
+            {'name':'Neem', 'region':'Saudi/India', 'temp_min':20,'temp_max':45,'humidity_min':20,'humidity_max':60,'ph_min':6.2,'ph_max':8.5,'soil_moisture_min':15,'soil_moisture_max':40,'light_min':75,'light_max':100,'rain_min':400,'rain_max':1200,'grow_days':730,'water_need':'Low','priority':8},
+            {'name':'Mango', 'region':'India', 'temp_min':24,'temp_max':30,'humidity_min':50,'humidity_max':80,'ph_min':5.5,'ph_max':7.5,'soil_moisture_min':40,'soil_moisture_max':70,'light_min':70,'light_max':100,'rain_min':500,'rain_max':1000,'grow_days':1825,'water_need':'Medium','priority':10}
+            // Add the rest of your 100 Trees here directly!
+        ];
+
+        const plants_data = [
+            {'name':'Wheat', 'region':'India', 'temp_min':15, 'temp_max':25, 'humidity_min':40, 'humidity_max':70, 'ph_min':6.0, 'ph_max':7.5, 'soil_moisture_min':40, 'soil_moisture_max':60, 'light_min':80, 'light_max':100, 'rain_min':300, 'rain_max':900, 'grow_days':120, 'water_need':'Medium', 'priority':10},
+            {'name':'Rice', 'region':'India', 'temp_min':20, 'temp_max':35, 'humidity_min':60, 'humidity_max':85, 'ph_min':5.5, 'ph_max':7.0, 'soil_moisture_min':70, 'soil_moisture_max':100, 'light_min':80, 'light_max':100, 'rain_min':1000, 'rain_max':3000, 'grow_days':150, 'water_need':'High', 'priority':10},
+            {'name':'Maize (Corn)', 'region':'World', 'temp_min':18, 'temp_max':32, 'humidity_min':50, 'humidity_max':75, 'ph_min':5.8, 'ph_max':7.0, 'soil_moisture_min':50, 'soil_moisture_max':75, 'light_min':80, 'light_max':100, 'rain_min':500, 'rain_max':1000, 'grow_days':110, 'water_need':'Medium', 'priority':10},
+            {'name':'Sorghum (Jowar)', 'region':'Saudi/India', 'temp_min':25, 'temp_max':38, 'humidity_min':30, 'humidity_max':60, 'ph_min':5.5, 'ph_max':8.5, 'soil_moisture_min':30, 'soil_moisture_max':55, 'light_min':85, 'light_max':100, 'rain_min':400, 'rain_max':700, 'grow_days':110, 'water_need':'Low', 'priority':10},
+            {'name':'Pearl Millet (Bajra)', 'region':'Saudi/India', 'temp_min':28, 'temp_max':42, 'humidity_min':25, 'humidity_max':50, 'ph_min':6.0, 'ph_max':8.5, 'soil_moisture_min':25, 'soil_moisture_max':50, 'light_min':90, 'light_max':100, 'rain_min':250, 'rain_max':600, 'grow_days':90, 'water_need':'Low', 'priority':10},
+            {'name':'Finger Millet (Ragi)', 'region':'India', 'temp_min':20, 'temp_max':35, 'humidity_min':40, 'humidity_max':75, 'ph_min':5.0, 'ph_max':8.0, 'soil_moisture_min':35, 'soil_moisture_max':60, 'light_min':80, 'light_max':100, 'rain_min':500, 'rain_max':1000, 'grow_days':120, 'water_need':'Low', 'priority':9},
+            {'name':'Barley', 'region':'World', 'temp_min':12, 'temp_max':25, 'humidity_min':40, 'humidity_max':70, 'ph_min':6.0, 'ph_max':7.5, 'soil_moisture_min':35, 'soil_moisture_max':60, 'light_min':80, 'light_max':100, 'rain_min':200, 'rain_max':1000, 'grow_days':100, 'water_need':'Low', 'priority':9},
+            {'name':'Oats', 'region':'World', 'temp_min':15, 'temp_max':25, 'humidity_min':50, 'humidity_max':80, 'ph_min':5.5, 'ph_max':7.0, 'soil_moisture_min':45, 'soil_moisture_max':70, 'light_min':75, 'light_max':100, 'rain_min':400, 'rain_max':800, 'grow_days':100, 'water_need':'Medium', 'priority':8},
+            {'name':'Tomato', 'region':'World', 'temp_min':20, 'temp_max':30, 'humidity_min':50, 'humidity_max':80, 'ph_min':6.0, 'ph_max':6.8, 'soil_moisture_min':50, 'soil_moisture_max':70, 'light_min':70, 'light_max':100, 'rain_min':600, 'rain_max':1200, 'grow_days':90, 'water_need':'Medium', 'priority':10},
+            {'name':'Chili Pepper', 'region':'India', 'temp_min':20, 'temp_max':35, 'humidity_min':50, 'humidity_max':80, 'ph_min':6.0, 'ph_max':7.0, 'soil_moisture_min':45, 'soil_moisture_max':70, 'light_min':75, 'light_max':100, 'rain_min':600, 'rain_max':1200, 'grow_days':90, 'water_need':'Medium', 'priority':10},
+            {'name':'Aloe Vera', 'region':'Saudi/India', 'temp_min':20, 'temp_max':40, 'humidity_min':20, 'humidity_max':60, 'ph_min':7.0, 'ph_max':8.5, 'soil_moisture_min':15, 'soil_moisture_max':40, 'light_min':80, 'light_max':100, 'rain_min':150, 'rain_max':400, 'grow_days':730, 'water_need':'Low', 'priority':10}
+            // Add the rest of your 100 Plants here directly!
+        ];
+
+        const dry_fruits_data = [
+            {'name':'Almond (Badam)', 'region':'World', 'temp_min':15, 'temp_max':30, 'humidity_min':30, 'humidity_max':60, 'ph_min':6.0, 'ph_max':7.5, 'soil_moisture_min':35, 'soil_moisture_max':60, 'light_min':80, 'light_max':100, 'rain_min':400, 'rain_max':700, 'grow_days':1095, 'water_need':'Medium', 'priority':10},
+            {'name':'Walnut (Akhrot)', 'region':'India', 'temp_min':10, 'temp_max':25, 'humidity_min':40, 'humidity_max':70, 'ph_min':6.0, 'ph_max':7.0, 'soil_moisture_min':40, 'soil_moisture_max':65, 'light_min':75, 'light_max':100, 'rain_min':600, 'rain_max':1000, 'grow_days':1825, 'water_need':'Medium', 'priority':10},
+            {'name':'Cashew (Kaju)', 'region':'India', 'temp_min':20, 'temp_max':35, 'humidity_min':60, 'humidity_max':85, 'ph_min':5.5, 'ph_max':6.5, 'soil_moisture_min':50, 'soil_moisture_max':75, 'light_min':80, 'light_max':100, 'rain_min':1000, 'rain_max':2000, 'grow_days':1095, 'water_need':'Medium', 'priority':10},
+            {'name':'Pistachio (Pista)', 'region':'World', 'temp_min':15, 'temp_max':38, 'humidity_min':20, 'humidity_max':50, 'ph_min':7.0, 'ph_max':8.5, 'soil_moisture_min':25, 'soil_moisture_max':50, 'light_min':85, 'light_max':100, 'rain_min':200, 'rain_max':500, 'grow_days':1825, 'water_need':'Low', 'priority':10},
+            {'name':'Pecan', 'region':'World', 'temp_min':15, 'temp_max':30, 'humidity_min':50, 'humidity_max':80, 'ph_min':6.0, 'ph_max':7.0, 'soil_moisture_min':45, 'soil_moisture_max':70, 'light_min':80, 'light_max':100, 'rain_min':700, 'rain_max':1200, 'grow_days':2190, 'water_need':'High', 'priority':9},
+            {'name':'Hazelnut', 'region':'World', 'temp_min':10, 'temp_max':25, 'humidity_min':50, 'humidity_max':80, 'ph_min':6.0, 'ph_max':7.0, 'soil_moisture_min':45, 'soil_moisture_max':70, 'light_min':75, 'light_max':100, 'rain_min':700, 'rain_max':1000, 'grow_days':1460, 'water_need':'Medium', 'priority':9},
+            {'name':'Fox Nut (Makhana)', 'region':'India', 'temp_min':20, 'temp_max':35, 'humidity_min':70, 'humidity_max':90, 'ph_min':6.5, 'ph_max':7.5, 'soil_moisture_min':90, 'soil_moisture_max':100, 'light_min':80, 'light_max':100, 'rain_min':1000, 'rain_max':2000, 'grow_days':150, 'water_need':'High', 'priority':10},
+            {'name':'Ajwa Date', 'region':'Saudi', 'temp_min':25, 'temp_max':50, 'humidity_min':10, 'humidity_max':40, 'ph_min':7.0, 'ph_max':8.5, 'soil_moisture_min':15, 'soil_moisture_max':35, 'light_min':90, 'light_max':100, 'rain_min':0, 'rain_max':150, 'grow_days':1460, 'water_need':'Low', 'priority':10},
+            {'name':'Sunflower Seed', 'region':'World', 'temp_min':20, 'temp_max':32, 'humidity_min':40, 'humidity_max':70, 'ph_min':6.0, 'ph_max':7.5, 'soil_moisture_min':40, 'soil_moisture_max':65, 'light_min':85, 'light_max':100, 'rain_min':500, 'rain_max':900, 'grow_days':100, 'water_need':'Medium', 'priority':9},
+            {'name':'Chia Seed', 'region':'World', 'temp_min':15, 'temp_max':28, 'humidity_min':40, 'humidity_max':70, 'ph_min':6.5, 'ph_max':8.0, 'soil_moisture_min':40, 'soil_moisture_max':65, 'light_min':80, 'light_max':100, 'rain_min':400, 'rain_max':800, 'grow_days':120, 'water_need':'Low', 'priority':8}
+            // Add the rest of your 50 Dry Fruits here directly!
+        ];
+
+        // ==========================================
+        // DYNAMIC RENDER ENGINE (Formats the raw arrays into UI)
+        // ==========================================
+        
+        let allCropsCompiled = [];
+        
+        function compileDatabase() {
+            // Process Trees
+            trees_data.forEach(c => {
+                allCropsCompiled.push({
+                    category: "Tree", icon: "🌳", name: c.name, days: c.grow_days + " days",
+                    phases: ["Sapling / Rooting", "Vegetative Canopy", "Flowering", "Harvest Cycle"],
+                    depth: "5-10 cm", water: "Every " + (c.water_need==='Low'?14:(c.water_need==='Medium'?7:3)) + " days",
+                    ph: c.ph_min + " - " + c.ph_max, heat: "Up to " + c.temp_max + "°C",
+                    tips: ["Optimal Native Region: " + c.region, "Required Light Intensity: " + c.light_min + "% - " + c.light_max + "%", "System Priority Index: " + c.priority + "/10"]
+                });
+            });
+            // Process Plants
+            plants_data.forEach(c => {
+                allCropsCompiled.push({
+                    category: "Plant", icon: "🌿", name: c.name, days: c.grow_days + " days",
+                    phases: ["Germination", "Vegetative Growth", "Flowering Phase", "Maturation"],
+                    depth: "1-3 cm", water: "Every " + (c.water_need==='Low'?7:(c.water_need==='Medium'?4:2)) + " days",
+                    ph: c.ph_min + " - " + c.ph_max, heat: "Up to " + c.temp_max + "°C",
+                    tips: ["Optimal Native Region: " + c.region, "Required Light Intensity: " + c.light_min + "% - " + c.light_max + "%", "System Priority Index: " + c.priority + "/10"]
+                });
+            });
+            // Process Dry Fruits
+            dry_fruits_data.forEach(c => {
+                allCropsCompiled.push({
+                    category: "Dry Fruit", icon: "🥜", name: c.name, days: c.grow_days + " days",
+                    phases: ["Seedling", "Structural Est.", "Nut Development", "Yield Harvest"],
+                    depth: "3-5 cm", water: "Every " + (c.water_need==='Low'?10:(c.water_need==='Medium'?7:4)) + " days",
+                    ph: c.ph_min + " - " + c.ph_max, heat: "Up to " + c.temp_max + "°C",
+                    tips: ["Optimal Native Region: " + c.region, "Required Light Intensity: " + c.light_min + "% - " + c.light_max + "%", "System Priority Index: " + c.priority + "/10"]
+                });
+            });
+        }
+
+        function renderCrops(filterCategory, searchQuery) {
+            const grid = document.getElementById('cropsGrid');
+            grid.innerHTML = ''; 
+
+            allCropsCompiled.forEach((crop, index) => {
+                if (filterCategory !== 'All' && crop.category !== filterCategory) return;
+                if (searchQuery && !crop.name.toLowerCase().includes(searchQuery.toLowerCase())) return;
+
+                let tipsHtml = '';
+                crop.tips.forEach(tip => { tipsHtml += `<li>${tip}</li>`; });
+
+                const cardHtml = `
+                    <div class="crop-card">
+                        <div class="crop-header" onclick="toggleCrop(this)">
+                            <h3>${crop.icon} ${crop.name}</h3><span class="days-badge">${crop.days}</span>
+                        </div>
+                        <div class="crop-body">
+                            <div class="milestones">
+                                <div class="milestone-label">Growth Timeline Matrix</div>
+                                <div class="milestone-bar">
+                                    <div class="phase germination">${crop.phases[0]}</div>
+                                    <div class="phase vegetative">${crop.phases[1]}</div>
+                                    <div class="phase flowering">${crop.phases[2]}</div>
+                                    <div class="phase harvest">${crop.phases[3]}</div>
+                                </div>
+                            </div>
+                            <div class="details-grid">
+                                <div class="detail-item"><div class="label">Optimal Sowing Depth</div><div class="value">${crop.depth}</div></div>
+                                <div class="detail-item"><div class="label">Hydration Cycle</div><div class="value">${crop.water}</div></div>
+                                <div class="detail-item"><div class="label">Optimal pH Level</div><div class="value">${crop.ph}</div></div>
+                                <div class="detail-item"><div class="label">Thermal Tolerance</div><div class="value">${crop.heat}</div></div>
+                            </div>
+                            <div class="tips">
+                                <h4>Expert Cultivation Parameters</h4>
+                                <ul>${tipsHtml}</ul>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                grid.innerHTML += cardHtml;
+            });
+        }
+
+        window.onload = () => { 
+            compileDatabase();
+            renderCrops('All', ''); 
+        };
+
         function toggleCrop(header) {
             var body = header.nextElementSibling;
             body.classList.toggle('open');
         }
 
         function filterCrops() {
-            var search = document.getElementById('searchInput').value.toLowerCase();
-            var cards = document.querySelectorAll('.crop-card');
-            cards.forEach(function(card) {
-    var name = card.getAttribute('data-name').toLowerCase();
-    card.style.display = name.includes(search) ? 'block' : 'none';
-});
-}
+            var search = document.getElementById('searchInput').value;
+            var activeBtn = document.querySelector('.filter-btn.active').innerText;
+            var cat = 'All';
+            if(activeBtn.includes('Trees')) cat = 'Tree';
+            if(activeBtn.includes('Plants')) cat = 'Plant';
+            if(activeBtn.includes('Dry Fruits')) cat = 'Dry Fruit';
+            renderCrops(cat, search);
+        }
 
-function filterByCategory(cat, btn) {
-var btns = document.querySelectorAll('.filter-btn');
-btns.forEach(function(b) { b.classList.remove('active'); });
-btn.classList.add('active');
-
-var cards = document.querySelectorAll('.crop-card');
-cards.forEach(function(card) {
-    if (cat === 'all' || card.getAttribute('data-category') === cat) {
-        card.style.display = 'block';
-    } else {
-        card.style.display = 'none';
-    }
-});
-}
-</script>
+        function filterByCategory(cat, btn) {
+            document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            var search = document.getElementById('searchInput').value;
+            renderCrops(cat, search);
+        }
+    </script>
 </body>
 </html>

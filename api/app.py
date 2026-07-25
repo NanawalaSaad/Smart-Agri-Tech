@@ -1,100 +1,160 @@
-from flask import Flask,request,jsonify
-import joblib
-import numpy as np
-import json
+from flask import Flask, render_template, request, jsonify
 import pickle
-with open(r'D:\desert-agritech\models\crops_db.pkl', 'rb') as f:
-    crops_db = pickle.load(f)
-#flask app banao
-app=Flask(__name__)
+import os
 
-#model load karo
-model=joblib.load(r'D:\desert-agritech\models\xgboost_yeild_model.pkl')
-print("Model Loaded")
+app = Flask(__name__)
 
-#home route
+# --- GLOBAL LIVE SENSOR MEMORY ---
+live_sensor_data = {
+    'temperature': 0.0, 'humidity': 0.0, 'soil_moisture': 0.0, 
+    'pH_level': 0.0, 'light_hours': 0.0, 'water_given_ml': 0.0, 'nutrient_level': 0.0
+}
+
+# --- LOAD EXPERT SYSTEM DATABASE ---
+MODEL_PATH = os.path.join(os.path.dirname(__file__), '../models/expert_system_db.pkl')
+try:
+    with open(MODEL_PATH, 'rb') as f:
+        crops_db = pickle.load(f)
+    print(f"✅ Loaded {len(crops_db)} crops successfully!")
+except Exception as e:
+    print(f"❌ Error loading model: {e}")
+    crops_db = []
+
+# --- CORE ENGINE: CATEGORY & SCALING LOGIC ---
+def get_categorized_matches(sensor_data, top_n=3):
+    temp_results = {'Tree': [], 'Plant': [], 'Dry Fruit': []}
+    final_results = {'Tree': [], 'Plant': [], 'Dry Fruit': []}
+    
+    for crop in crops_db:
+        score, total = 0, 0
+        
+        t = sensor_data.get('temperature', 30)
+        if crop['temp_min'] <= t <= crop['temp_max']: score += 25
+        elif abs(t - crop['temp_min']) <= 5 or abs(t - crop['temp_max']) <= 5: score += 12
+        total += 25
+        
+        h = sensor_data.get('humidity', 50)
+        if crop['humidity_min'] <= h <= crop['humidity_max']: score += 20
+        elif abs(h - crop['humidity_min']) <= 10 or abs(h - crop['humidity_max']) <= 10: score += 10
+        total += 20
+        
+        s = sensor_data.get('soil_moisture', 40)
+        if crop['soil_moisture_min'] <= s <= crop['soil_moisture_max']: score += 20
+        elif abs(s - crop['soil_moisture_min']) <= 10 or abs(s - crop['soil_moisture_max']) <= 10: score += 10
+        total += 20
+        
+        p = sensor_data.get('pH_level', 6.5)
+        if crop['ph_min'] <= p <= crop['ph_max']: score += 15
+        elif abs(p - crop['ph_min']) <= 0.5 or abs(p - crop['ph_max']) <= 0.5: score += 7
+        total += 15
+
+        score += crop.get('priority', 5) * 0.5
+        raw_pct = (score / (total + 5)) * 100
+        
+        cat = crop.get('category', 'Plant')
+        if cat in temp_results:
+            temp_results[cat].append({
+                'raw_pct': raw_pct,
+                'crop': crop['name'],
+                'grow_days': crop['grow_days'],
+                'water_need': crop['water_need']
+            })
+
+    # APPLY RELATIVE SCALING PER CATEGORY
+    for cat, crops in temp_results.items():
+        if not crops: continue
+        max_raw = max(c['raw_pct'] for c in crops)
+        for c in crops:
+            c['match_score'] = round((c['raw_pct'] / max_raw) * 99.0, 1) if max_raw > 0 else 0
+            c['min_days'] = max(10, c['grow_days'] - 10)
+            c['max_days'] = c['grow_days'] + 10
+            c['yield_kg'] = round((c['match_score'] / 100) * 8.5, 2)
+            c['sowing_depth'] = "3-5 cm"
+            c['water_schedule'] = "Every 3 days" if c['water_need'] == 'High' else "Every 7-10 days"
+        crops.sort(key=lambda x: x['match_score'], reverse=True)
+        final_results[cat] = crops[:top_n]
+
+    return final_results
+
+# --- HTML ROUTES ---
 @app.route('/')
-def home():
-    return jsonify({
-        "message":"Desert Agritech API",
-        "status":"running"
-    })
-    
-    
-#predict Route
-@app.route('/predict',methods=['POST'])
-def predict():
-    data=request.json
-    
-    #input values lo
-    features=np.array([[
-        data['temperature'],
-        data['humidity'],
-        data['soil_moisture'],
-        data['pH_level'],
-        data['light_hours'],
-        data['water_given_ml'],
-        data['nutrient_level'],
-        data['co2_ppm'],
-        data['day_number'],
-        data['heat_stress_index'],
-        data['water_efficiency'],
-        data['pH_deviation'],
-        data['growth_score']
-    ]])
-    
-    #prediction karo
-    prediction=model.predict(features)[0]
-    
-    return jsonify({
-        "yield_kg":round(float(prediction),2),
-        "status":"success"
-    })
-    
+def index(): return render_template('index.html')
+@app.route('/predict-options')
+def predict_options(): return render_template('predict_options.html')
+@app.route('/crop')
+def crop(): return render_template('crop.html')
+@app.route('/schedule')
+def schedule(): return render_template('Schedule.html')
+@app.route('/hardware')
+def hardware(): return render_template('Hardware.html')
+@app.route('/protection')
+def protection(): return render_template('Protection.html')
+@app.route('/playbook')
+def playbook(): return render_template('Playbook.html')
+@app.route('/insights')
+def insights(): return render_template('insights.html')
+@app.route('/about')
+def about(): return render_template('about.html')
+@app.route('/contact')
+def contact(): return render_template('contact.html')
 
-# Function ko test karke output save karo
-def calculate_match_score(value, min_val, max_val):
-    if min_val <= value <= max_val:
-        return 100.0
-    elif value < min_val:
-        diff = min_val - value
-        range_size = max_val - min_val
-        return max(0, 100 - (diff / range_size) * 100)
-    else:
-        diff = value - max_val
-        range_size = max_val - min_val
-        return max(0, 100 - (diff / range_size) * 100)
+# --- IOT LIVE DATA ENDPOINTS ---
+@app.route('/api/sensor-update', methods=['POST'])
+def sensor_update():
+    global live_sensor_data
+    data = request.json
+    live_sensor_data.update(data)
+    return jsonify({"status": "success"})
+
+@app.route('/api/live-sensor', methods=['GET'])
+def get_live_sensor():
+    return jsonify(live_sensor_data)
+
+# --- PREDICTION API WITH FAILSAFE ---
+@app.route('/predict', methods=['POST'])
+def predict():
+    # FAILSAFE CHECK
+    if live_sensor_data['temperature'] == 0 or live_sensor_data['soil_moisture'] == 0:
+        return jsonify({'status': 'HARDWARE ERROR: Sensors disconnected!', 'yield_kg': 0})
+        
+    moist = live_sensor_data['soil_moisture']
+    status = 'Healthy' if moist > 30 else 'Water Stress Risk'
+    yld = round((moist / 100) * 8.5, 2)
+    return jsonify({'status': status, 'yield_kg': yld})
+
+@app.route('/smart-predict', methods=['POST'])
+def smart_predict():
+    data = request.json
+    mode = data.get('mode', 'yield')
+    days_grown = data.get('days_grown', 0)
+    
+    if live_sensor_data['temperature'] == 0 or live_sensor_data['soil_moisture'] == 0:
+        return jsonify({'status': 'HARDWARE ERROR: Sensors disconnected!', 'yield_kg': 0, 'error': True})
+    
+    moist = live_sensor_data['soil_moisture']
+    status = 'Healthy' if moist > 30 else 'Water Stress Risk'
+    yld = round((moist / 100) * 8.5, 2)
+    response = {'status': status, 'yield_kg': yld, 'error': False}
+    
+    if mode != 'yield':
+        matches = get_categorized_matches(live_sensor_data, top_n=3)
+        for cat in matches:
+            for m in matches[cat]: m['days_grown'] = days_grown
+        response['recommendations'] = matches
+    return jsonify(response)
 
 @app.route('/recommend', methods=['POST'])
 def recommend():
-    data = request.json
-    results = []
-    
-    for crop, ranges in crops_db.items():
-        temp_min, temp_max, hum_min, hum_max, soil_min, soil_max, \
-        ph_min, ph_max, light_min, light_max, water_min, water_max, \
-        nut_min, nut_max = ranges
-        
-        score = (
-            calculate_match_score(data['temperature'], temp_min, temp_max) +
-            calculate_match_score(data['humidity'], hum_min, hum_max) +
-            calculate_match_score(data['soil_moisture'], soil_min, soil_max) +
-            calculate_match_score(data['pH_level'], ph_min, ph_max) +
-            calculate_match_score(data['light_hours'], light_min, light_max) +
-            calculate_match_score(data['water_given_ml'], water_min, water_max) +
-            calculate_match_score(data['nutrient_level'], nut_min, nut_max)
-        ) / 7
-        
-        results.append({
-            'crop': crop,
-            'match_score': round(score, 1)
-        })
-    
-    results = sorted(results, key=lambda x: x['match_score'], reverse=True)
-    
-    return jsonify({'recommendations': results[:5]})
+    matches = get_categorized_matches(live_sensor_data, top_n=3)
+    return jsonify({'recommendations': matches})
 
-    
-#run
-if __name__=='__main__':
-    app.run(debug=True,port=5000)
+@app.route('/schedule-recommend', methods=['POST'])
+def schedule_recommend():
+    data = request.json
+    matches = get_categorized_matches(live_sensor_data, top_n=3)
+    for cat in matches:
+        for m in matches[cat]: m['days_grown'] = data.get('days_grown', 0)
+    return jsonify({'recommendations': matches})
+
+if __name__ == '__main__':
+    app.run(host='0.0.0.0', port=5000, debug=True)

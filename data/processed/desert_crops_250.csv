@@ -1,0 +1,251 @@
+name,region,temp_min,temp_max,humidity_min,humidity_max,ph_min,ph_max,soil_moisture_min,soil_moisture_max,light_min,light_max,rain_min,rain_max,grow_days,water_need,priority,category
+Date Palm,Saudi/India,25,50,10,40,7.0,8.5,10,30,85,100,0,150,1095,Low,10,Tree
+Olive,Saudi/India,10,40,25,60,5.5,8.5,20,45,80,100,250,700,1460,Low,10,Tree
+Pomegranate,Saudi/India,18,38,20,50,5.5,7.2,20,45,75,100,200,700,730,Low,10,Tree
+Fig,Saudi/India,15,38,20,55,6.0,8.0,20,45,75,100,300,800,730,Low,9,Tree
+Moringa,Saudi/India,20,42,20,65,6.0,8.0,15,45,75,100,250,1500,180,Low,10,Tree
+Acacia,Saudi,20,48,5,35,6.0,8.5,5,25,80,100,100,500,730,Low,9,Tree
+Sidr (Lote Tree),Saudi,20,45,10,40,6.5,8.5,10,30,80,100,100,500,1095,Low,9,Tree
+Tamarind,Saudi/India,20,40,30,70,5.5,7.5,25,55,75,100,500,1500,1825,Low,8,Tree
+Ghaf Tree,Saudi,22,50,5,30,7.0,9.0,5,20,85,100,50,300,730,Low,9,Tree
+Neem,Saudi/India,20,45,20,60,6.2,8.5,15,40,75,100,400,1200,730,Low,8,Tree
+Mango,India,24,30,50,80,5.5,7.5,40,70,70,100,500,1000,1825,Medium,10,Tree
+Lemon,Saudi/India,23,30,40,70,5.5,7.0,35,60,70,100,900,1200,730,Medium,9,Tree
+Orange,Saudi/India,23,30,40,70,5.5,6.5,35,60,70,100,900,1200,1095,Medium,9,Tree
+Banana,India,20,35,75,90,5.5,7.0,65,85,65,100,1200,2500,300,High,9,Tree
+Coconut,India,20,35,70,90,5.5,7.5,60,85,70,100,1500,3000,2190,High,8,Tree
+Papaya,India,22,35,55,80,6.0,7.0,50,75,70,100,1000,1500,270,Medium,9,Tree
+Guava,India,20,35,40,75,5.0,7.0,35,65,65,100,700,1000,365,Low,9,Tree
+Jackfruit,India,22,35,60,85,6.0,7.5,50,80,65,100,1500,2500,1095,High,8,Tree
+Jamun (Java Plum),India,18,38,40,75,6.0,8.0,35,65,65,100,800,1800,1095,Low,8,Tree
+Amla (Indian Gooseberry),India,18,38,40,75,6.0,8.0,30,60,70,100,600,1500,1095,Low,9,Tree
+Mulberry,India,15,38,40,75,5.5,7.0,35,65,65,100,600,1500,365,Medium,7,Tree
+Sapodilla (Chiku),India,20,38,50,80,6.0,8.0,45,70,70,100,1250,2500,1460,Medium,8,Tree
+Custard Apple,India,22,35,45,75,5.5,7.5,40,65,65,100,700,1500,730,Low,8,Tree
+Kokum,India,22,35,65,90,5.5,7.0,55,80,60,90,2000,4000,1825,High,7,Tree
+Apple,World,5,25,45,75,5.5,6.5,40,65,65,100,600,1200,1095,Medium,7,Tree
+Pear,World,5,25,45,70,6.0,7.0,40,65,65,100,600,1200,1095,Medium,6,Tree
+Cherry,World,5,22,45,70,6.0,7.0,35,60,65,100,600,1200,1095,Medium,6,Tree
+Peach,World,5,28,40,70,6.0,7.0,35,60,65,100,500,1000,730,Medium,6,Tree
+Plum,World,5,28,45,70,5.5,7.0,35,60,65,100,500,1000,730,Medium,6,Tree
+Apricot,World,5,30,30,60,6.0,8.0,25,55,70,100,300,700,730,Low,7,Tree
+Avocado,World,15,30,55,80,6.0,7.0,45,70,65,100,1000,1800,1825,Medium,7,Tree
+Grape (Vine),Saudi/India,15,35,25,60,5.5,7.0,25,50,75,100,300,700,730,Low,8,Tree
+Persimmon,World,10,30,40,70,6.0,7.0,35,65,65,100,500,1200,1095,Medium,6,Tree
+Lychee,India,20,35,65,90,5.5,7.0,55,80,65,100,1200,2000,1095,High,8,Tree
+Starfruit (Carambola),India,20,35,60,85,5.5,6.5,50,75,65,100,1500,2500,365,Medium,7,Tree
+Longan,World,20,33,65,85,5.5,6.5,50,75,65,100,1200,2000,1095,Medium,6,Tree
+Rambutan,World,22,35,70,90,5.5,6.5,60,85,65,100,2000,3500,1095,High,5,Tree
+Dragon Fruit,World,20,38,40,70,6.0,7.0,30,55,70,100,400,1000,365,Low,7,Tree
+Passion Fruit,World,18,32,55,80,6.0,7.0,45,70,65,100,900,1800,365,Medium,6,Tree
+Kiwi,World,10,28,50,80,6.0,6.5,50,70,60,100,800,1500,1095,Medium,6,Tree
+White Mulberry,India,12,38,40,75,5.5,7.5,35,65,60,100,600,1500,365,Medium,7,Tree
+Pineapple,India,20,35,60,85,4.5,6.5,50,75,65,100,1000,2000,540,Medium,8,Tree
+Breadfruit,World,22,35,65,90,6.0,7.5,55,80,65,100,1500,3000,1095,High,5,Tree
+Durian,World,24,35,75,95,6.0,7.0,65,85,65,100,1500,2500,1825,High,5,Tree
+Mangosteen,World,22,35,70,90,5.5,6.5,60,85,60,90,1500,3000,2190,High,5,Tree
+Soursop (Graviola),World,22,32,65,85,5.5,6.5,55,80,65,100,1000,2000,730,Medium,6,Tree
+Sugar Apple,India,22,35,45,75,5.5,7.5,35,65,70,100,700,1500,730,Low,7,Tree
+Pomelo,World,20,35,50,80,5.5,7.0,40,70,65,100,900,1800,1095,Medium,6,Tree
+Mandarin (Kinnow),India,20,32,40,70,5.5,7.0,35,60,70,100,900,1200,1095,Medium,8,Tree
+Grapefruit,World,18,32,40,70,5.5,6.5,35,60,70,100,900,1200,1095,Medium,6,Tree
+Lime,Saudi/India,20,35,40,75,5.5,7.0,35,60,70,100,900,1200,365,Medium,9,Tree
+Tangerine,World,18,32,40,70,5.5,7.0,35,60,70,100,900,1200,1095,Medium,6,Tree
+Quince,World,5,28,40,70,5.5,7.0,35,65,65,100,400,900,1095,Low,5,Tree
+Loquat,World,10,30,45,75,5.5,6.5,40,65,65,100,500,1200,365,Low,6,Tree
+Jujube (Ber),Saudi/India,18,42,20,55,6.0,8.5,15,45,75,100,200,700,365,Low,9,Tree
+Bitter Orange,Saudi/India,18,35,40,70,5.5,7.0,35,60,70,100,700,1200,1095,Medium,7,Tree
+Carob,Saudi,15,38,20,55,6.5,8.5,15,40,75,100,250,700,1825,Low,8,Tree
+Eucalyptus,World,10,40,30,70,5.5,7.5,25,60,70,100,500,1500,1095,Low,6,Tree
+Teak,India,20,38,60,90,5.5,7.5,50,80,70,100,1200,2500,3650,High,6,Tree
+Sandalwood,India,18,35,40,75,6.0,7.5,30,60,60,100,500,1500,5475,Low,7,Tree
+Rubber Tree,World,20,35,70,90,5.0,6.5,60,85,65,100,2000,3000,2555,High,5,Tree
+Coffee,World,18,28,60,85,6.0,6.5,55,80,50,80,1500,2500,1095,High,7,Tree
+Cacao (Chocolate),World,20,32,70,90,5.5,7.0,65,85,50,75,1500,2500,1825,High,6,Tree
+Vanilla (Vine Tree),World,20,32,70,90,6.0,7.0,60,85,50,75,1500,2500,1095,High,6,Tree
+Cinnamon,India,22,35,65,90,5.0,6.5,55,80,55,85,2000,3000,1825,High,7,Tree
+Clove,World,20,35,70,90,5.5,7.0,60,85,55,85,1500,3000,2190,High,6,Tree
+Nutmeg,World,20,35,70,90,5.5,7.0,60,85,55,85,1500,2500,2190,High,5,Tree
+Black Pepper Vine,India,22,35,70,90,5.5,6.5,60,85,55,80,1500,3000,1095,High,8,Tree
+Cardamom,India,18,30,70,90,5.0,6.5,65,85,40,70,1500,3000,1095,High,8,Tree
+Bay Leaf,World,10,30,45,75,6.0,7.5,35,65,60,100,500,1200,730,Low,6,Tree
+Argan,Saudi,18,42,10,40,7.0,9.0,10,30,80,100,100,400,3650,Low,8,Tree
+Frankincense (Boswellia),Saudi,20,45,10,35,7.0,9.0,5,25,80,100,100,500,2190,Low,9,Tree
+Myrrh,Saudi,20,45,10,35,7.0,9.0,5,25,80,100,100,500,2190,Low,9,Tree
+Oud (Agarwood),Saudi/India,22,35,65,90,5.5,7.0,55,80,55,85,1500,3000,3650,High,10,Tree
+Bottle Palm,Saudi/India,20,40,30,70,6.5,8.5,20,50,75,100,300,1000,1825,Low,7,Tree
+Doum Palm,Saudi,20,45,10,40,7.0,9.0,10,30,80,100,50,400,2190,Low,8,Tree
+Fan Palm,Saudi,18,42,15,45,6.5,8.5,10,35,80,100,100,500,1825,Low,7,Tree
+Sycamore Fig,Saudi,20,40,20,55,6.5,8.5,15,45,75,100,200,700,1095,Low,8,Tree
+Henna (Lawsonia),Saudi/India,20,45,15,50,6.5,8.5,15,40,75,100,200,600,365,Low,8,Tree
+Jojoba,Saudi,18,45,10,35,6.5,8.5,8,25,80,100,100,500,1095,Low,9,Tree
+Mesquite,Saudi,18,45,10,40,6.5,9.0,5,25,80,100,100,500,730,Low,7,Tree
+Rosewood,India,20,38,55,85,6.0,7.5,45,75,65,100,800,2000,3650,Medium,6,Tree
+Bamboo,India,15,38,55,85,5.5,7.0,50,80,60,100,1000,2500,365,Medium,8,Tree
+Curry Leaf Tree,India,18,38,40,75,6.0,7.5,35,60,65,100,600,1500,365,Low,9,Tree
+Amaltas (Golden Shower),India,18,42,30,70,6.0,8.0,25,55,70,100,400,1200,730,Low,7,Tree
+Bael (Wood Apple),India,20,40,30,70,6.0,8.5,25,55,70,100,500,1500,1095,Low,8,Tree
+Pongam (Karanj),India,20,40,30,70,6.0,8.5,25,55,70,100,500,1500,730,Low,7,Tree
+Indian Almond (Badam),India,22,38,55,80,6.0,7.5,45,70,70,100,1200,2500,1095,Medium,7,Tree
+Mahua,India,18,40,40,80,5.5,7.5,35,65,65,100,700,1500,1095,Low,7,Tree
+Flame of Forest (Palash),India,18,40,35,75,6.0,8.0,25,55,70,100,500,1500,1095,Low,6,Tree
+Ashoka Tree,India,20,38,50,85,5.5,7.5,40,70,60,100,700,2000,1825,Medium,7,Tree
+Banyan Tree (Bargad),India,22,42,40,80,6.0,8.0,35,65,70,100,600,2000,3650,Medium,8,Tree
+Kapok (Silk Cotton),India,20,40,50,85,6.0,7.5,45,75,70,100,800,2500,1825,Medium,6,Tree
+Mahogany,World,20,35,60,85,6.0,7.5,50,80,65,100,1000,2500,5475,High,7,Tree
+Juniper,Saudi,5,35,20,55,6.5,8.5,15,40,75,100,200,600,1825,Low,8,Tree
+Cedar (Deodar),World,5,30,40,70,5.5,7.0,35,60,65,100,500,1200,3650,Medium,6,Tree
+Jacaranda,World,15,35,45,75,6.0,7.5,40,65,70,100,500,1500,1095,Medium,6,Tree
+Kadamba,India,22,38,60,90,5.5,7.5,55,80,65,100,1200,2500,1460,High,7,Tree
+Peepal Tree,India,20,42,35,80,6.0,8.5,30,65,70,100,500,2000,3650,Medium,8,Tree
+Sal Tree,India,18,40,45,85,5.5,7.0,40,75,65,100,1000,2500,3650,High,7,Tree
+Wheat,India,15,25,40,70,6.0,7.5,40,60,80,100,300,900,120,Medium,10,Plant
+Rice,India,20,35,60,85,5.5,7.0,70,100,80,100,1000,3000,150,High,10,Plant
+Maize (Corn),World,18,32,50,75,5.8,7.0,50,75,80,100,500,1000,110,Medium,10,Plant
+Sorghum (Jowar),Saudi/India,25,38,30,60,5.5,8.5,30,55,85,100,400,700,110,Low,10,Plant
+Pearl Millet (Bajra),Saudi/India,28,42,25,50,6.0,8.5,25,50,90,100,250,600,90,Low,10,Plant
+Finger Millet (Ragi),India,20,35,40,75,5.0,8.0,35,60,80,100,500,1000,120,Low,9,Plant
+Barley,World,12,25,40,70,6.0,7.5,35,60,80,100,200,1000,100,Low,9,Plant
+Oats,World,15,25,50,80,5.5,7.0,45,70,75,100,400,800,100,Medium,8,Plant
+Rye,World,10,22,40,75,5.0,7.0,35,60,80,100,300,800,120,Low,7,Plant
+Quinoa,World,15,25,40,70,6.0,8.5,30,55,80,100,300,1000,110,Low,7,Plant
+Buckwheat,World,15,25,50,80,5.5,7.0,40,65,70,100,500,1000,80,Medium,6,Plant
+Amaranth,India,22,35,40,75,6.0,7.5,35,60,80,100,400,1000,90,Low,7,Plant
+Teff,World,15,30,30,60,5.5,7.5,30,55,80,100,300,800,60,Low,6,Plant
+Spelt,World,12,24,40,70,6.0,7.5,40,60,80,100,400,900,120,Medium,6,Plant
+Triticale,World,10,25,40,70,5.5,7.5,35,60,80,100,350,900,110,Low,6,Plant
+Foxtail Millet,India,20,35,30,60,5.5,7.5,25,50,85,100,300,600,80,Low,8,Plant
+Proso Millet,India,18,35,30,60,5.5,7.5,25,50,85,100,250,500,70,Low,8,Plant
+Barnyard Millet,India,20,38,40,70,5.5,7.5,35,60,80,100,400,800,90,Medium,8,Plant
+Kodo Millet,India,22,38,30,60,5.5,7.5,25,50,85,100,300,600,100,Low,8,Plant
+Little Millet,India,20,35,35,65,5.5,7.5,30,55,80,100,300,600,80,Low,8,Plant
+Tomato,World,20,30,50,80,6.0,6.8,50,70,70,100,600,1200,90,Medium,10,Plant
+Potato,World,15,25,50,80,5.5,6.5,50,75,80,100,500,1000,100,Medium,10,Plant
+Onion,World,13,28,40,70,6.0,7.0,40,65,80,100,400,800,110,Medium,10,Plant
+Garlic,World,12,28,40,70,6.0,7.5,40,60,80,100,400,800,150,Medium,10,Plant
+Carrot,World,15,22,50,80,6.0,6.8,50,75,70,100,500,1000,80,Medium,9,Plant
+Cabbage,World,15,22,60,90,6.0,7.0,55,80,70,100,600,1200,90,High,9,Plant
+Cauliflower,World,15,22,60,85,6.0,7.0,55,80,70,100,600,1200,85,High,9,Plant
+Broccoli,World,15,23,60,85,6.0,7.0,55,80,70,100,600,1000,80,High,8,Plant
+Spinach,World,10,22,50,80,6.5,7.5,50,75,60,90,400,800,45,Medium,9,Plant
+Lettuce,World,15,22,50,80,6.0,7.0,55,80,60,90,400,800,60,Medium,8,Plant
+Bell Pepper (Capsicum),World,20,30,50,80,6.0,6.8,50,75,70,100,600,1000,80,Medium,9,Plant
+Chili Pepper,India,20,35,50,80,6.0,7.0,45,70,75,100,600,1200,90,Medium,10,Plant
+Cucumber,World,20,32,60,85,6.0,7.0,55,80,70,100,600,1200,60,High,9,Plant
+Eggplant (Brinjal),India,22,35,50,80,5.5,7.0,50,75,75,100,600,1000,100,Medium,10,Plant
+Zucchini,World,18,30,50,80,6.0,7.5,50,75,70,100,500,1000,60,Medium,8,Plant
+Pumpkin,World,20,32,50,80,6.0,7.5,45,70,75,100,500,1200,110,Medium,8,Plant
+Bitter Gourd (Karela),India,24,35,60,85,6.0,7.0,50,75,75,100,800,1500,70,Medium,9,Plant
+Bottle Gourd (Lauki),India,22,35,60,85,6.0,7.5,50,75,75,100,600,1200,75,Medium,9,Plant
+Ridge Gourd (Tori),India,24,35,60,85,6.0,7.5,50,75,75,100,600,1200,70,Medium,9,Plant
+Okra (Bhindi),India,24,35,50,80,6.0,7.5,45,70,80,100,600,1200,60,Medium,10,Plant
+Sweet Potato,World,20,32,50,80,5.5,6.5,45,70,80,100,750,1250,100,Medium,9,Plant
+Radish,World,15,25,50,80,6.0,7.0,50,75,70,100,400,800,40,Medium,8,Plant
+Turnip,World,10,22,50,80,6.0,7.5,50,75,70,100,400,800,60,Medium,7,Plant
+Beetroot,World,15,25,50,80,6.0,7.0,50,75,70,100,400,800,60,Medium,8,Plant
+Green Bean,World,18,28,50,80,6.0,7.0,50,75,70,100,500,1000,60,Medium,9,Plant
+Pea,World,13,22,50,80,6.0,7.5,50,75,70,100,400,900,70,Medium,9,Plant
+Celery,World,15,22,60,90,6.0,7.0,60,85,60,90,600,1000,100,High,7,Plant
+Asparagus,World,15,30,50,80,6.5,7.5,50,75,70,100,500,1000,730,Medium,7,Plant
+Artichoke,World,13,24,50,80,6.5,8.0,50,75,70,100,400,900,120,Medium,6,Plant
+Leek,World,13,24,50,80,6.0,7.0,50,75,70,100,500,1000,100,Medium,7,Plant
+Spring Onion,World,15,25,50,80,6.0,7.0,50,75,70,100,400,800,60,Medium,8,Plant
+Mustard Greens,India,10,22,50,80,6.0,7.5,50,75,70,100,400,800,45,Medium,8,Plant
+Fenugreek Leaves (Methi),India,15,25,40,75,6.0,7.0,45,70,70,100,300,700,30,Medium,9,Plant
+Coriander Leaves,India,15,25,50,80,6.2,7.2,50,75,60,90,400,800,40,Medium,9,Plant
+Mint,World,15,25,50,80,6.0,7.0,55,80,60,90,500,1000,60,High,8,Plant
+Taro (Arbi),India,20,35,60,90,5.5,6.5,60,85,60,100,1500,2500,200,High,8,Plant
+Yam (Suran),India,25,35,60,85,5.5,6.5,50,75,70,100,1000,2000,250,High,8,Plant
+Cassava,World,25,35,50,80,5.5,7.0,40,65,80,100,1000,2500,270,Medium,7,Plant
+Parsnip,World,10,22,50,80,6.0,7.0,50,75,70,100,500,1000,110,Medium,6,Plant
+Rutabaga,World,10,22,50,80,6.0,7.5,50,75,70,100,500,1000,90,Medium,6,Plant
+Chickpea (Chana),India,20,30,30,60,6.0,8.0,30,55,80,100,400,800,100,Low,10,Plant
+Pigeon Pea (Toor),India,25,35,40,75,5.5,7.5,35,60,80,100,600,1000,120,Medium,10,Plant
+Lentil (Masoor),India,15,25,40,70,6.0,7.0,35,60,80,100,300,600,100,Low,10,Plant
+Mung Bean (Moong),India,25,35,40,75,6.2,7.2,40,65,80,100,600,900,75,Medium,10,Plant
+Black Gram (Urad),India,25,35,40,75,5.5,7.5,40,65,80,100,600,900,80,Medium,10,Plant
+Kidney Bean (Rajma),India,15,25,50,80,6.0,7.0,45,70,75,100,600,1000,90,Medium,9,Plant
+Cowpea (Lobia),India,25,35,40,75,5.5,7.5,35,60,80,100,400,800,80,Low,9,Plant
+Soybean,World,20,30,50,80,6.0,7.0,50,75,80,100,500,1000,120,Medium,10,Plant
+Peanut (Groundnut),India,25,35,40,75,6.0,6.5,40,65,80,100,500,1000,120,Medium,10,Plant
+Broad Bean (Fava),World,15,22,50,80,6.0,7.5,45,70,70,100,500,900,100,Medium,8,Plant
+Lima Bean,World,20,30,50,80,6.0,6.8,45,70,75,100,600,1000,90,Medium,8,Plant
+Lupin,World,15,25,40,70,5.5,7.0,35,60,80,100,400,800,100,Low,7,Plant
+Navy Bean,World,20,30,50,80,6.0,7.0,45,70,75,100,500,900,90,Medium,8,Plant
+Pinto Bean,World,20,30,50,80,6.0,7.0,45,70,75,100,500,900,90,Medium,8,Plant
+Black-eyed Pea,World,25,35,40,75,5.5,7.5,40,65,80,100,500,900,80,Medium,9,Plant
+Moth Bean,India,25,40,20,50,6.0,8.5,25,50,85,100,200,500,75,Low,9,Plant
+Horse Gram,India,20,35,30,60,6.0,7.5,30,55,80,100,300,700,90,Low,9,Plant
+Bambara Groundnut,World,25,35,30,60,5.5,7.5,30,55,85,100,400,800,120,Low,7,Plant
+Cluster Bean (Guar),India,25,35,30,60,7.0,8.5,25,50,85,100,300,600,90,Low,9,Plant
+Field Pea,World,13,22,50,80,6.0,7.5,50,75,70,100,400,900,70,Medium,8,Plant
+Cotton,India,25,35,50,75,5.5,8.5,45,70,80,100,500,1000,150,Medium,10,Plant
+Sugarcane,India,20,35,60,85,6.0,7.5,65,90,80,100,1500,2500,365,High,10,Plant
+Jute,India,25,35,70,90,6.0,7.5,70,95,75,100,1500,2500,120,High,9,Plant
+Tobacco,World,20,30,50,80,5.5,6.5,50,75,80,100,500,1000,100,Medium,8,Plant
+Sunflower,World,20,30,40,70,6.0,7.5,40,65,85,100,500,900,100,Medium,9,Plant
+Safflower,India,15,30,30,60,6.0,8.0,30,55,85,100,300,600,120,Low,8,Plant
+Sesame,India,25,35,40,70,5.5,8.0,35,60,85,100,400,800,90,Low,9,Plant
+Mustard Seed,India,10,25,40,70,6.0,7.5,40,65,80,100,350,700,110,Medium,10,Plant
+Castor,India,20,35,30,60,5.5,8.0,30,55,85,100,400,800,150,Low,9,Plant
+Flaxseed (Linseed),India,15,25,40,70,6.0,7.5,40,65,80,100,400,800,100,Medium,9,Plant
+Ginger,India,25,30,60,85,5.5,6.5,55,80,60,90,1500,2500,250,High,10,Plant
+Turmeric,India,25,35,60,85,5.5,7.5,55,80,60,90,1500,2500,250,High,10,Plant
+Cumin (Jeera),India,15,28,30,60,7.0,8.5,30,55,80,100,300,600,100,Low,10,Plant
+Fennel (Saunf),India,15,25,40,70,6.5,8.0,40,65,80,100,400,800,120,Medium,9,Plant
+Fenugreek Seed (Methi),India,15,25,40,70,6.0,7.0,40,65,80,100,300,700,90,Medium,9,Plant
+Black Seed (Kalonji),India,15,25,40,70,6.0,7.5,40,65,80,100,300,700,120,Medium,8,Plant
+Aloe Vera,Saudi/India,20,40,20,60,7.0,8.5,15,40,80,100,150,400,730,Low,10,Plant
+Stevia,World,15,30,50,80,6.0,7.0,50,75,75,100,800,1500,90,Medium,8,Plant
+Lemongrass,India,20,35,50,80,5.5,7.5,45,70,80,100,1000,2000,180,Medium,9,Plant
+Ashwagandha,India,20,35,30,60,7.5,8.5,30,55,80,100,500,800,150,Low,10,Plant
+Almond (Badam),World,15,30,30,60,6.0,7.5,35,60,80,100,400,700,1095,Medium,10,Dry Fruit
+Walnut (Akhrot),India,10,25,40,70,6.0,7.0,40,65,75,100,600,1000,1825,Medium,10,Dry Fruit
+Cashew (Kaju),India,20,35,60,85,5.5,6.5,50,75,80,100,1000,2000,1095,Medium,10,Dry Fruit
+Pistachio (Pista),World,15,38,20,50,7.0,8.5,25,50,85,100,200,500,1825,Low,10,Dry Fruit
+Pecan,World,15,30,50,80,6.0,7.0,45,70,80,100,700,1200,2190,High,9,Dry Fruit
+Hazelnut,World,10,25,50,80,6.0,7.0,45,70,75,100,700,1000,1460,Medium,9,Dry Fruit
+Macadamia,World,15,28,60,85,5.5,6.5,50,75,80,100,1000,2000,2555,Medium,9,Dry Fruit
+Pine Nut (Chilgoza),India,5,25,30,60,5.5,7.0,30,55,80,100,400,800,3650,Low,10,Dry Fruit
+Fox Nut (Makhana),India,20,35,70,90,6.5,7.5,90,100,80,100,1000,2000,150,High,10,Dry Fruit
+Chironji (Charoli),India,20,40,30,60,6.0,7.5,30,55,80,100,500,1000,1095,Low,9,Dry Fruit
+Chestnut,World,10,25,50,80,5.5,6.5,45,70,80,100,800,1200,1825,Medium,8,Dry Fruit
+Brazil Nut,World,25,35,70,95,5.5,6.5,60,85,80,100,1500,3000,3650,High,8,Dry Fruit
+Dried Coconut (Copra),India,22,35,70,90,5.5,7.5,60,85,80,100,1500,3000,2190,High,9,Dry Fruit
+Tiger Nut,World,20,30,50,80,5.5,7.0,45,70,80,100,600,1000,120,Medium,7,Dry Fruit
+Betel Nut (Areca),India,20,35,70,90,5.5,7.5,60,85,80,100,1500,3000,1825,High,8,Dry Fruit
+Ajwa Date,Saudi,25,50,10,40,7.0,8.5,15,35,90,100,0,150,1460,Low,10,Dry Fruit
+Medjool Date,Saudi,25,50,10,40,7.0,8.5,15,35,90,100,0,150,1460,Low,10,Dry Fruit
+Mabroom Date,Saudi,25,48,10,35,7.0,8.5,10,30,90,100,0,150,1460,Low,10,Dry Fruit
+Sukkari Date,Saudi,25,48,10,35,7.0,8.5,15,35,90,100,0,150,1460,Low,10,Dry Fruit
+Safawi Date,Saudi,25,50,10,40,7.0,8.5,15,35,90,100,0,150,1460,Low,10,Dry Fruit
+Zahidi Date,Saudi,25,45,15,45,7.0,8.5,15,35,85,100,50,200,1460,Low,9,Dry Fruit
+Khudri Date,Saudi,25,48,10,40,7.0,8.5,15,35,90,100,0,150,1460,Low,9,Dry Fruit
+Kholas Date,Saudi,25,48,10,40,7.0,8.5,15,35,90,100,0,150,1460,Low,9,Dry Fruit
+Sagai Date,Saudi,25,48,10,35,7.0,8.5,10,30,90,100,0,150,1460,Low,9,Dry Fruit
+Barhi Date,Saudi,25,48,15,45,7.0,8.5,15,35,85,100,0,200,1460,Low,9,Dry Fruit
+Raisin Grape (Kishmish),India,15,35,25,60,5.5,7.0,30,55,85,100,300,700,730,Low,10,Dry Fruit
+Dried Apricot (Khubani),World,5,30,30,60,6.0,8.0,25,55,80,100,300,700,730,Low,9,Dry Fruit
+Dried Fig (Anjeer),Saudi/India,15,38,20,55,6.0,8.0,20,45,80,100,300,800,730,Low,10,Dry Fruit
+Prune Plum (Aloo Bukhara),World,5,28,40,65,5.5,7.0,35,60,75,100,500,1000,730,Medium,9,Dry Fruit
+Dried Mulberry (Shahtoot),India,15,38,35,70,5.5,7.0,35,60,75,100,500,1200,365,Medium,8,Dry Fruit
+Goji Berry,World,10,30,30,60,6.5,8.0,30,55,80,100,400,800,365,Low,8,Dry Fruit
+Dried Cranberry,World,10,25,50,80,4.0,5.5,60,85,80,100,1000,2000,1095,High,7,Dry Fruit
+Black Currant,World,5,22,50,80,6.0,7.0,50,75,75,100,600,1000,365,Medium,7,Dry Fruit
+Dried Blueberry,World,10,25,50,80,4.5,5.5,50,75,80,100,800,1200,1095,Medium,7,Dry Fruit
+Dried Cherry,World,5,25,40,70,6.0,7.0,40,65,80,100,600,1200,1095,Medium,7,Dry Fruit
+Watermelon Seed (Magaz),India,22,35,40,75,6.0,7.5,45,70,80,100,500,1000,90,Medium,9,Dry Fruit
+Muskmelon Seed (Magaz),India,22,35,40,75,6.0,7.5,45,70,80,100,500,1000,90,Medium,9,Dry Fruit
+Pumpkin Seed (Pepita),World,20,32,40,75,6.0,7.5,45,70,80,100,500,1200,110,Medium,9,Dry Fruit
+Sunflower Seed,World,20,32,40,70,6.0,7.5,40,65,85,100,500,900,100,Medium,9,Dry Fruit
+Chia Seed,World,15,28,40,70,6.5,8.0,40,65,80,100,400,800,120,Low,8,Dry Fruit
+Shea Nut,World,25,38,30,70,5.5,7.5,35,60,80,100,600,1200,3650,Low,7,Dry Fruit
+Kola Nut,World,25,35,70,95,5.5,7.0,65,90,70,100,1500,2500,2555,High,7,Dry Fruit
+Pili Nut,World,22,35,70,90,5.5,6.5,60,85,80,100,2000,3500,1825,High,6,Dry Fruit
+Sacha Inchi,World,20,35,60,85,5.5,7.0,50,75,75,100,1000,2000,250,Medium,7,Dry Fruit
+Ginkgo Nut,World,10,25,40,75,6.0,7.5,45,70,75,100,800,1500,3650,Medium,6,Dry Fruit
+Hickory Nut,World,10,28,50,80,6.0,7.0,45,70,75,100,800,1200,3650,Medium,6,Dry Fruit
+Candlenut,World,22,35,65,90,5.5,7.0,60,85,80,100,1500,3000,1095,High,6,Dry Fruit
+Acorn Nut,World,5,25,40,75,5.5,7.5,40,65,75,100,600,1200,3650,Medium,5,Dry Fruit
+Beech Nut,World,5,22,50,80,6.0,7.5,45,70,70,100,700,1200,3650,Medium,5,Dry Fruit
+Cedar Nut,World,5,20,40,75,5.5,7.0,40,65,75,100,500,1000,3650,Medium,5,Dry Fruit
