@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Live Field Sensors - Smart Agri-Tech</title>
+    <style>
+        body { font-family: 'Segoe UI', Arial, sans-serif; background: linear-gradient(135deg, #2c3e50, #34495e); margin: 0; padding: 20px; text-align: center; color: white; min-height: 100vh; }
+        .top-bar { display: flex; align-items: center; justify-content: center; position: relative; margin-bottom: 40px; margin-top: 20px;}
+        .back-btn { position: absolute; left: 10px; background: #e74c3c; color: white; padding: 10px 20px; border-radius: 8px; text-decoration: none; font-weight: bold; box-shadow: 0 4px 6px rgba(0,0,0,0.2); }
+        h1 { font-size: 32px; margin: 0; }
+        .grid { display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; max-width: 900px; margin: auto; }
+        .card { background: white; padding: 25px; border-radius: 15px; box-shadow: 0 8px 15px rgba(0,0,0,0.2); width: calc(33.333% - 20px); min-width: 220px; box-sizing: border-box; color: #333; }
+        .card h3 { margin: 0 0 10px 0; font-size: 16px; color: #7f8c8d; text-transform: uppercase; }
+        .card p { font-size: 30px; font-weight: bold; margin: 0; }
+        .temp{border-bottom: 6px solid #e74c3c;} .hum{border-bottom: 6px solid #3498db;}
+        .mois{border-bottom: 6px solid #9b59b6;} .ph{border-bottom: 6px solid #1abc9c;}
+        .light{border-bottom: 6px solid #f39c12;} .rain{border-bottom: 6px solid #2980b9;}
+        .dist{border-bottom: 6px solid #e67e22;}
+    </style>
+</head>
+<body>
+    <div class="top-bar">
+        <a href="/" class="back-btn">&#8592; Back to Gateway</a>
+        <h1>📡 Live Hardware Sensors Dashboard</h1>
+    </div>
+
+    <div class="grid">
+        <div class="card temp"><h3>Temperature</h3><p id="t_val">-- °C</p></div>
+        <div class="card hum"><h3>Humidity</h3><p id="h_val">-- %</p></div>
+        <div class="card mois"><h3>Soil Moisture</h3><p id="m_val">-- %</p></div>
+        <div class="card ph"><h3>pH Level</h3><p id="ph_val">--</p></div>
+        <div class="card light"><h3>Light Hours (LDR)</h3><p id="l_val">-- Hrs</p></div>
+        <div class="card rain"><h3>Rain Sensor</h3><p id="r_val">--</p></div>
+        <div class="card dist"><h3>Water Level (Ultrasonic)</h3><p id="d_val">-- cm</p></div>
+    </div>
+
+    <script>
+        setInterval(() => {
+            fetch('/api/live-sensor')
+            .then(res => res.json())
+            .then(data => {
+                document.getElementById('t_val').innerText = (data.temperature || 0).toFixed(1) + " °C";
+                document.getElementById('h_val').innerText = (data.humidity || 0).toFixed(0) + " %";
+                document.getElementById('m_val').innerText = (data.soil_moisture || 0) + " %";
+                document.getElementById('ph_val').innerText = data.pH_level ? Number(data.pH_level).toFixed(1) : "--";
+                document.getElementById('l_val').innerText = data.light_hours ? Number(data.light_hours).toFixed(1) + " Hrs" : "0 Hrs";
+                
+                let rainText = data.rain_status > 500 ? "Raining 🌧️" : "Dry ☀️";
+                document.getElementById('r_val').innerText = rainText;
+                
+                document.getElementById('d_val').innerText = data.ultrasonic_distance ? Number(data.ultrasonic_distance).toFixed(1) + " cm" : "-- cm";
+            }).catch(err => console.log("Sensor fetch error"));
+        }, 2000);
+    </script>
+</body>
+</html>

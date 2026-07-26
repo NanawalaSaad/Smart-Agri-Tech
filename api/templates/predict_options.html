@@ -36,7 +36,7 @@
         button:hover { background:#92400e; }
         
         .result { margin-top:25px; display:none; }
-        .result-card { background:#fef3c7; border-radius:12px; padding:20px; margin-bottom:12px; }
+        .result-card { background:#fef3c7; border-radius:12px; padding:20px; margin-bottom:15px; }
         .result-header { display:flex; justify-content:space-between; align-items:center; margin-bottom:12px; }
         .result-title { font-size:18px; font-weight:700; color:#92400e; }
         .badge { background:#92400e; color:white; padding:5px 14px; border-radius:20px; font-size:13px; }
@@ -46,14 +46,18 @@
         .stat-box { background:white; border-radius:8px; padding:12px; text-align:center; }
         .stat-val { font-size:20px; font-weight:700; color:#d97706; }
         .stat-lbl { font-size:11px; color:#888; margin-top:3px; }
+        .care-schedule { background:white; margin-top:12px; padding:15px; border-radius:8px; font-size:14px; color:#333; text-align:left; border-left:4px solid #d97706; }
+        .care-schedule ul { padding-left:20px; margin-top:5px; }
+        .care-schedule li { margin-bottom:4px; }
         .alert-good { background:#d1fae5; color:#065f46; padding:12px; border-radius:8px; margin-top:10px; font-weight:600; font-size: 14px;}
         .alert-warn { background:#fee2e2; color:#991b1b; padding:12px; border-radius:8px; margin-top:10px; font-weight:600; font-size: 14px;}
     </style>
 </head>
 <body>
     <div class="navbar">
-        <a href="/" class="nav-link">🏠 Predictor</a>
+        <a href="/" class="nav-link">🏠 Gateway</a>
         <a href="/predict-options" class="nav-link active">🎯 Smart Predict</a>
+        <a href="/sensors" class="nav-link">📡 Live Sensors</a>
         <a href="/crop" class="nav-link">🌱 Crop Recommend</a>
         <a href="/insights" class="nav-link">📊 Insights</a>
         <a href="/schedule" class="nav-link">📅 Schedule</a>
@@ -71,17 +75,17 @@
         <div class="mode-section">
             <h2>Select Prediction Mode:</h2>
             <div class="mode-cards">
-                <div class="mode-card selected" onclick="selectMode('yield')">
+                <div class="mode-card selected" onclick="selectMode('yield', event)">
                     <div class="icon">🌾</div>
                     <div class="title">Only Yield</div>
                     <div class="desc">Predict total harvest volume (kg)</div>
                 </div>
-                <div class="mode-card" onclick="selectMode('crop_yield')">
+                <div class="mode-card" onclick="selectMode('crop_yield', event)">
                     <div class="icon">🌱</div>
                     <div class="title">Crop + Yield</div>
                     <div class="desc">Optimal crop & harvest volume</div>
                 </div>
-                <div class="mode-card" onclick="selectMode('crop_yield_days')">
+                <div class="mode-card" onclick="selectMode('crop_yield_days', event)">
                     <div class="icon">📅</div>
                     <div class="title">Crop + Yield + Days</div>
                     <div class="desc">Comprehensive timeline prediction</div>
@@ -91,7 +95,6 @@
 
         <div class="status-badge" id="syncStatus">📡 Syncing with ESP32 Hardware...</div>
 
-        <!-- REMOVED FAKE SENSORS, KEPT ONLY REAL HARDWARE INPUTS -->
         <div class="input-section">
             <div class="field"><label>🌡️ Temperature (°C)</label><input type="number" id="temperature" value="0" readonly></div>
             <div class="field"><label>💧 Humidity (%)</label><input type="number" id="humidity" value="0" readonly></div>
@@ -116,7 +119,7 @@
     <script>
         var currentMode = 'yield';
 
-        function selectMode(mode) {
+        function selectMode(mode, event) {
             currentMode = mode;
             document.querySelectorAll('.mode-card').forEach(c => c.classList.remove('selected'));
             event.currentTarget.classList.add('selected');
@@ -130,15 +133,12 @@
                 document.getElementById('temperature').value = data.temperature || 0;
                 document.getElementById('humidity').value = data.humidity || 0;
                 document.getElementById('soil_moisture').value = data.soil_moisture || 0;
-                
-                let phFormat = data.pH_level ? parseFloat(data.pH_level).toFixed(1) : 0;
-                document.getElementById('pH_level').value = phFormat;
-                
+                document.getElementById('pH_level').value = data.pH_level ? parseFloat(data.pH_level).toFixed(1) : 0;
                 if(data.light_hours) {
                     document.getElementById('light_hours').value = parseFloat(data.light_hours).toFixed(1);
                 }
                 
-                if(data.temperature > 0) {
+                if(data.temperature > 0 || data.soil_moisture > 0) {
                     var badge = document.getElementById('syncStatus');
                     badge.innerHTML = "✅ Hardware Connected & Syncing Live Data";
                     badge.style.background = "#d1fae5";
@@ -160,7 +160,11 @@
                 body: JSON.stringify(data)
             })
             .then(res => res.json())
-            .then(result => showResults(result, data.mode));
+            .then(result => showResults(result, data.mode))
+            .catch(err => {
+                alert("Prediction Error. Check server console.");
+                console.error(err);
+            });
         }
 
         function showResults(result, mode) {
@@ -216,7 +220,16 @@
                                     '<div class="stat-box"><div class="stat-val">' + c.yield_kg + ' kg</div><div class="stat-lbl">Predicted Yield</div></div>' +
                                     '<div class="stat-box"><div class="stat-val">' + c.min_days + '-' + c.max_days + '</div><div class="stat-lbl">Growth Days</div></div>' +
                                     extraHtml +
-                                '</div>' + alertHtml +
+                                '</div>' + 
+                                '<div class="care-schedule">' +
+                                    '<b>🌿 Smart Care Schedule:</b>' +
+                                    '<ul>' +
+                                        '<li><b>Watering:</b> ' + c.water_schedule + '</li>' +
+                                        '<li><b>Sunlight:</b> ' + c.sunlight + '</li>' +
+                                        '<li><b>Fertilizer:</b> ' + c.fertilizer + '</li>' +
+                                    '</ul>' +
+                                '</div>' +
+                                alertHtml +
                             '</div>';
                         });
                     }
