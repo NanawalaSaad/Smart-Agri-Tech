@@ -58,7 +58,7 @@ This project provides an intelligent decision support system capable of monitori
 # 🏗️ System Architecture
 
 <p align="center">
-        <img src="assets/architecture_diagram.png" alt="System Architecture" width="850">
+        <img src="assets/architecture/architecture_diagram.png" alt="System Architecture" width="850">
 </p>
 
 
@@ -72,9 +72,9 @@ This project provides an intelligent decision support system capable of monitori
 - Rain Sensor
 - LDR Sensor
 - Ultrasonic Sensor
-
----
-
+![Hardware Setup](assets/hardware/hardware_setup.jpg)
+![Soil Sensors](assets/hardware/soil_sensor.jpg)
+![pH sensor](assets/hardware/ph_sensor.jpg)
 # 💻 Software Stack
 
 ### Backend
@@ -143,29 +143,45 @@ The system then calculates:
 - AI Playbook
 
 ---
+## 📸 Project Screenshots
+
+### 🏠 Home Page
+![Home](assets/screenshots/home.png)
+
+### 📊 Live Sensor Dashboard
+![Dashboard](assets/screenshots/dashboard.png)
+
+### 🌱 AI Crop Recommendation
+![Prediction](assets/screenshots/AI Cultivation.png)
+
+### 📡 Sensor Monitoring
+![Sensors](assets/screenshots/sensor_page.png)
+
+### about
+![Sensors](assets/screenshots/about_page.png)
+
+----
 
 # 📂 Project Structure
 
 ```
+## 📁 Project Structure
+
+```text
 Smart-Agri-Tech
 │
-├── IoT
-│   └── ESP32 Firmware
-│
-├── API
-│   ├── app.py
-│   ├── requirements.txt
-│   └── templates
-│
-├── Dashboard
-│
-├── Models
-│   ├── crop_recommender_model.pkl
-│   └── expert_system_db.pkl
-│
-├── Notebooks
-│
-└── .gitignore
+├── IoT/
+├── API/
+├── dashboard/
+├── models/
+├── notebooks/
+├── assets/
+│   ├── architecture/
+│   ├── hardware/
+│   └── screenshots/
+├── requirements.txt
+├── .gitignore
+└── README.md
 ```
 
 ---
@@ -210,7 +226,6 @@ https://smart-agri-tech.onrender.com
 - Multi-language Support
 
 ---
-
 # 📚 Research Contribution
 
 This project demonstrates the integration of:
@@ -235,6 +250,8 @@ Government Engineering College Gandhinagar
 
 India
 
+GitHub:
+https://github.com/NanawalaSaad
 ---
 
 ## ⭐ Support
