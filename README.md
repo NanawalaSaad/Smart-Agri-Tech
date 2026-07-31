@@ -146,13 +146,13 @@ The system then calculates:
 ## 📸 Project Screenshots
 
 ### 🏠 Home Page
-![Home](assets/screenshots/home.png)
+![Home](assets/screenshots/home_page.png)
 
 ### 📊 Live Sensor Dashboard
 ![Dashboard](assets/screenshots/dashboard.png)
 
 ### 🌱 AI Crop Recommendation
-![Prediction](assets/screenshots/AI Cultivation.png)
+![Prediction](assets/screenshots/AICultivation.png)
 
 ### 📡 Sensor Monitoring
 ![Sensors](assets/screenshots/sensor_page.png)
