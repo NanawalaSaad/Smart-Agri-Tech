@@ -1,4 +1,28 @@
-agrienv/
-_pycache_/
+# Python
+__pycache__/
 *.pyc
-api/ngrok.exe
+*.pyo
+*.pyd
+*.db
+
+# Virtual Environment
+venv/
+.env
+
+# VS Code
+.vscode/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# macOS
+.DS_Store
+
+# Windows
+Thumbs.db
+
+# Models (optional if large)
+*.h5
+
+# Logs
+*.log
