@@ -1,24 +1,41 @@
 # 🌾 Smart Desert Agri-Tech
 
-> **An AI + IoT Based Smart Desert Agriculture System for Precision Farming**
+<div align="center">
 
-![Python](https://img.shields.io/badge/Python-3.x-blue)
-![Flask](https://img.shields.io/badge/Flask-Web%20Framework-black)
-![ESP32](https://img.shields.io/badge/ESP32-IoT-red)
-![IoT](https://img.shields.io/badge/IoT-Smart%20Agriculture-green)
-![License](https://img.shields.io/badge/Status-Active-success)
+### AI + IoT Based Smart Agriculture System for Desert & Resource-Constrained Environments
 
----
+**Built with ESP32 • Flask • Python • Expert System • IoT • Render Cloud**
 
-## 📌 Overview
-
-Smart Desert Agri-Tech is an AI-powered precision agriculture platform designed for desert and resource-constrained environments.
-
-The system combines **ESP32**, **real-time IoT sensors**, **Artificial Intelligence**, and a **Flask web application** to monitor environmental conditions and recommend suitable crops along with intelligent irrigation and crop care schedules.
+</div>
 
 ---
 
-## ✨ Features
+## 📖 Overview
+
+Smart Desert Agri-Tech is an AI and IoT powered precision agriculture platform designed specifically for hyper-arid and desert environments.
+
+The system combines real-time environmental sensing using ESP32 hardware with an intelligent expert recommendation engine to assist farmers in crop selection, irrigation planning, yield estimation and environmental monitoring.
+
+Unlike traditional smart farming systems, this project focuses on desert agriculture where water availability, alkaline soil and extreme temperatures make cultivation challenging.
+
+---
+
+# 🎯 Problem Statement
+
+Desert agriculture faces multiple challenges including:
+
+- Water scarcity
+- High temperature
+- Low humidity
+- Soil alkalinity
+- Crop selection difficulties
+- Resource wastage
+
+This project provides an intelligent decision support system capable of monitoring field conditions in real time and recommending suitable crops together with irrigation schedules.
+
+---
+
+# ✨ Features
 
 - 🌡️ Real-Time Temperature Monitoring
 - 💧 Live Humidity Monitoring
@@ -26,16 +43,50 @@ The system combines **ESP32**, **real-time IoT sensors**, **Artificial Intellige
 - ⚗️ Soil pH Analysis
 - ☀️ Light Exposure Monitoring
 - 🌧️ Rain Detection
-- 📏 Water Level Monitoring
+- 📏 Reservoir Water Level Monitoring
 - 🤖 AI Crop Recommendation
 - 🌾 Yield Prediction
-- 📅 Smart Irrigation Schedule
-- 🧠 Expert System Based Decision Support
-- ☁️ Cloud Deployment using Render
+- 📅 Smart Crop Timeline Prediction
+- 💦 Smart Watering Schedule
+- 🌿 Fertilizer Recommendation
+- ☁️ Cloud Dashboard
+- 📡 ESP32 Live Sensor Integration
+- 🧠 Expert System Based Decision Engine
 
 ---
 
-## 🛠 Hardware
+# 🏗️ System Architecture
+
+```
+Environmental Sensors
+        │
+        ▼
+      ESP32
+        │
+        ▼
+ HTTP POST Requests
+        │
+        ▼
+ Flask Backend Server
+        │
+ ┌──────┼─────────────┐
+ │      │             │
+ ▼      ▼             ▼
+AI Engine Dashboard Prediction
+ │
+ ▼
+Crop Recommendation
+ │
+ ▼
+Smart Irrigation Schedule
+ │
+ ▼
+Farmer Dashboard
+```
+
+---
+
+# ⚙️ Hardware Components
 
 - ESP32 Development Board
 - Temperature Sensor
@@ -43,57 +94,173 @@ The system combines **ESP32**, **real-time IoT sensors**, **Artificial Intellige
 - Soil Moisture Sensor
 - pH Sensor
 - Rain Sensor
-- Ultrasonic Sensor
 - LDR Sensor
+- Ultrasonic Sensor
 
 ---
 
-## 💻 Software Stack
+# 💻 Software Stack
+
+### Backend
 
 - Python
 - Flask
 - Flask-CORS
 - Gunicorn
-- HTML
-- CSS
+
+### Frontend
+
+- HTML5
+- CSS3
 - JavaScript
-- Arduino IDE
+
+### AI & Data
+
+- Expert System
+- Pickle Database
 - Jupyter Notebook
+
+### IoT
+
+- ESP32
+- Arduino IDE
+
+### Deployment
+
 - GitHub
 - Render Cloud
 
 ---
 
-## 📂 Project Structure
+# 🧠 AI Prediction Engine
 
-```text
+The prediction engine evaluates live sensor data using a weighted expert system.
+
+Parameters include:
+
+- Temperature
+- Humidity
+- Soil Moisture
+- Soil pH
+
+Each crop receives a weighted score.
+
+The system then calculates:
+
+- Crop suitability
+- Estimated yield
+- Growth timeline
+- Watering schedule
+- Fertilizer recommendation
+
+---
+
+# 📊 Dashboard Modules
+
+- Live Sensor Dashboard
+- AI Prediction Hub
+- Crop Recommendation
+- Hardware Monitoring
+- Smart Schedule
+- Insights
+- Protection Module
+- AI Playbook
+
+---
+
+# 📂 Project Structure
+
+```
 Smart-Agri-Tech
 │
 ├── IoT
+│   └── ESP32 Firmware
+│
 ├── API
+│   ├── app.py
+│   ├── requirements.txt
+│   └── templates
+│
 ├── Dashboard
+│
 ├── Models
+│   ├── crop_recommender_model.pkl
+│   └── expert_system_db.pkl
+│
 ├── Notebooks
-│── Data
+│
 └── .gitignore
 ```
 
 ---
 
-## 🚀 Live Demo
+# 🚀 Installation
+
+Clone repository
+
+```bash
+git clone https://github.com/NanawalaSaad/Smart-Agri-Tech.git
+```
+
+Install dependencies
+
+```bash
+pip install -r requirements.txt
+```
+
+Run Flask
+
+```bash
+python app.py
+```
+
+---
+
+# 🌍 Live Demo
 
 https://smart-agri-tech.onrender.com
 
 ---
 
-## 👨‍💻 Author
+# 🔬 Future Improvements
 
-**Mohammad Saad Nanawala**
-
-Government Engineering College Gandhinagar
-
-Computer Engineering
+- Machine Learning Based Prediction
+- Disease Detection
+- Weather Forecast Integration
+- Mobile Application
+- Historical Analytics
+- Satellite Image Support
+- Automatic Irrigation Control
+- Multi-language Support
 
 ---
 
-⭐ If you like this project, please give it a Star.
+# 📚 Research Contribution
+
+This project demonstrates the integration of:
+
+- Internet of Things (IoT)
+- Edge Computing
+- Cloud Computing
+- Expert System
+- Precision Agriculture
+
+The architecture can serve as a foundation for future research in smart agriculture for arid regions.
+
+---
+
+# 👨‍💻 Author
+
+**Mohammad Saad Nanawala**
+
+Computer Engineering
+
+Government Engineering College Gandhinagar
+
+India
+
+---
+
+## ⭐ Support
+
+If you found this project useful, please consider giving it a ⭐ on GitHub.
