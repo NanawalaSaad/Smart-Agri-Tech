@@ -57,34 +57,10 @@ This project provides an intelligent decision support system capable of monitori
 
 # 🏗️ System Architecture
 
-```
-Environmental Sensors
-        │
-        ▼
-      ESP32
-        │
-        ▼
- HTTP POST Requests
-        │
-        ▼
- Flask Backend Server
-        │
- ┌──────┼─────────────┐
- │      │             │
- ▼      ▼             ▼
-AI Engine Dashboard Prediction
- │
- ▼
-Crop Recommendation
- │
- ▼
-Smart Irrigation Schedule
- │
- ▼
-Farmer Dashboard
-```
+<p align="center">
+        <img src="assets/architecture_diagram.png" alt="System Architecture" width="850">
+</p>
 
----
 
 # ⚙️ Hardware Components
 
