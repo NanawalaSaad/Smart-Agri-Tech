@@ -152,7 +152,7 @@ The system then calculates:
 ![Dashboard](assets/screenshots/dashboard.png)
 
 ### 🌱 AI Crop Recommendation
-![Prediction](assets/screenshots/AICultivation.png)
+![Prediction](assets/screenshots/aipredict.png)
 
 ### 📡 Sensor Monitoring
 ![Sensors](assets/screenshots/sensor_page.png)
