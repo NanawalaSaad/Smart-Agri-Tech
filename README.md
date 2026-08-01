@@ -1,5 +1,9 @@
 # 🌾 Smart Desert Agri-Tech
-
+![Python](https://img.shields.io/badge/Python-3.10-blue)
+![Flask](https://img.shields.io/badge/Flask-Web%20API-black)
+![ESP32](https://img.shields.io/badge/ESP32-IoT-green)
+![Render](https://img.shields.io/badge/Render-Cloud-purple)
+![License](https://img.shields.io/badge/License-MIT-orange)
 <div align="center">
 
 ### AI + IoT Based Smart Agriculture System for Desert & Resource-Constrained Environments
